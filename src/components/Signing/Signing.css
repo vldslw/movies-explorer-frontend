@@ -1,0 +1,38 @@
+.signing {
+  margin: 21px 70px 21px auto;
+  display: flex;
+}
+
+.signing__button {
+  margin: 0 0 0 30px;
+  text-decoration: none;
+  color: #000000;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signing__button:hover {
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.signing__button:first-of-type {
+  margin: 0;
+}
+
+.signing__button_blue {
+  padding: 0 20px;
+  background: #3456F3;
+  border-radius: 3px;
+  color: #FFFFFF;
+}
+
+.signing__button_blue:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
