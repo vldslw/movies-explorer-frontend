@@ -1,0 +1,38 @@
+.navigation {
+  margin: 21px 70px 21px auto;
+  display: flex;
+}
+
+.navigation__button {
+  margin: 0 0 0 20px;
+  text-decoration: none;
+  color: #000000;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigation__button:first-of-type {
+  margin: 0;
+}
+
+.navigation__button:hover {
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.navigation__button_grey {
+  margin: 0 0 0 50px;
+  line-height: 16px;
+  padding: 0 20px;
+  background: #F4F4F4;
+  border-radius: 20px;
+}
+
+.navigation__button_bold {
+  font-weight: 500;
+}
