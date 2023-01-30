@@ -5,14 +5,14 @@ function NavTab() {
     <section className="nav-tab">
       <nav>
           <ul className="nav-tab__links">
-            <li className="nav-tab__link">
-              <a href="#about-project" className="footer__link">О проекте</a>
+            <li className="nav-tab__item">
+              <a href="#about-project" className="nav-tab__link">О проекте</a>
             </li>
-            <li className="nav-tab__link">
-              <a href="#techs" className="footer__link">Технологии</a>
+            <li className="nav-tab__item">
+              <a href="#techs" className="nav-tab__link">Технологии</a>
             </li>
-            <li className="nav-tab__link">
-              <a href="#about-me" className="footer__link">Студент</a>
+            <li className="nav-tab__item">
+              <a href="#about-me" className="nav-tab__link">Студент</a>
             </li>
           </ul>
         </nav>
