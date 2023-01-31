@@ -11,6 +11,7 @@
 }
 
 .search__input {
+  padding: 0;
   margin: 25px;
   border: none;
   border-radius: 8px;

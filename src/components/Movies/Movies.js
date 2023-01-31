@@ -3,6 +3,8 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
 import SearchForm from '../SearchForm/SearchForm';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import More from '../More/More';
 
 
 function Movies() {
@@ -15,6 +17,8 @@ function Movies() {
         }
       />
       <SearchForm />
+      <MoviesCardList />
+      <More />
       <Footer /> 
     </>
   );

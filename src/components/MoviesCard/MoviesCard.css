@@ -1,0 +1,55 @@
+.card {
+  margin: 0 0 32px 0;
+  width: 360px;
+  min-height: 319px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+}
+
+.card__desc {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px;
+}
+
+.card__name {
+  margin: 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.card__duration {
+  margin: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: #A0A0A0;
+}
+
+.card__button {
+  display: block;
+  margin: 18px auto;
+  border: none;
+  padding: 9px 15px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 11px;
+  background: #F4F4F4;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.card__button:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.card__button_active {
+  color: rgba(0, 0, 0, 0);
+  background-image:url(../../images/savedButton.svg);
+}

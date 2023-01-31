@@ -3,6 +3,7 @@
   color: #000000;
   background-color: #FFFFFF;
   margin: 0 auto;
+  max-width: 1280px;
   min-height: 100vh;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;

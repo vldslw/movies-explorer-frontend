@@ -1,0 +1,25 @@
+.more {
+  margin: 0 70px;
+  display: flex;
+  justify-content: center;
+}
+
+.more__button {
+  min-width: 320px;
+  display: block;
+  margin: 50px auto 80px auto;
+  padding: 11px 0 9px 0;
+  border: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;  
+  background: #F4F4F4;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.more__button:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
