@@ -1,0 +1,33 @@
+.sign-bottom {
+  margin: 0 auto;
+}
+
+.sign-bottom__button { 
+  width: 396px; 
+  margin: 0 auto 16px; 
+  padding: 14px 0 14px; 
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #FFFFFF;
+  background: #3456F3;
+  border-radius: 3px;
+  border: none; 
+  border-radius: 2px; 
+  cursor: pointer; 
+} 
+
+.sign-bottom__link-desc {
+  margin: 0 auto 0; 
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center; 
+}
+
+.sign-bottom__link { 
+  text-decoration: none; 
+  color: #3456F3;
+} 
