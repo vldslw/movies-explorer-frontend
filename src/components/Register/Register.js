@@ -1,6 +1,5 @@
 import './Register.css';
 import SignHeader from "../SignHeader/SignHeader";
-import { Link } from 'react-router-dom'; 
 import SignBottom from '../SignBottom/SignBottom';
 
 function Register() {
