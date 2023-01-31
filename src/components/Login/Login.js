@@ -13,7 +13,7 @@ function Login() {
         <form
           className="login__form"
         > 
-          <span className="login__placeholder">Email</span>
+          <span className="login__placeholder">E-mail</span>
           <input
             type="email"
             id="email"

@@ -24,7 +24,7 @@ function Register() {
             required
           />
           <span className="register__error"></span>
-          <span className="register__placeholder">Email</span>
+          <span className="register__placeholder">E-mail</span>
           <input
             type="email"
             id="email"
