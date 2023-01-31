@@ -49,7 +49,12 @@
   transition: opacity 0.3s;
 }
 
-.card__button_active {
+.card__button_saved {
   color: rgba(0, 0, 0, 0);
   background-image:url(../../images/savedButton.svg);
+}
+
+.card__button_delete {
+  color: rgba(0, 0, 0, 0);
+  background-image:url(../../images/deleteButton.png);
 }
