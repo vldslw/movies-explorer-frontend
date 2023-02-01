@@ -35,3 +35,34 @@
 .navigation__button_bold {
   font-weight: 500;
 }
+
+.navigation__hamburger {
+  width: 44px;
+  height: 44px;
+  background-image: url(../../images/hamburger.svg);
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .navigation__hamburger {
+    display: block;
+  }
+
+  .navigation__button {
+    display: none;
+  }
+
+  .navigation {
+    margin: 15px 30px 15px auto;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 425px) {
+
+  .navigation {
+    margin: 15px 14px 16px auto;
+    display: flex;
+  }
+
+}

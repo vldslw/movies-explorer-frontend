@@ -53,3 +53,20 @@
 .login__error:last-of-type { 
   margin: 6px auto 202px; 
 } 
+
+
+@media screen and (max-width: 425px) {
+
+  .login__input { 
+    width: 260px; 
+  } 
+
+  .login__placeholder { 
+    width: 260px; 
+  } 
+
+  .login__error:last-of-type { 
+    margin: 6px auto 290px; 
+  } 
+
+}

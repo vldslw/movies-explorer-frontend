@@ -12,7 +12,7 @@
 
 .search__input {
   padding: 0;
-  margin: 25px;
+  margin: 25px auto 25px 25px;
   border: none;
   border-radius: 8px;
   flex-grow: 2;
@@ -28,7 +28,7 @@
 .search__button {
   width: 100px;
   height: 52px;
-  margin: 10px;
+  margin: 10px 10px 10px auto;
   border: none;
   padding: 17px 20px;
   font-weight: 500;
@@ -43,4 +43,29 @@
 .search__button:hover {
   opacity: 0.8;
   transition: opacity 0.3s;
+}
+
+@media screen and (max-width: 1024px) {
+  .search__form {
+    margin: 70px 30px 26px 30px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .search__form {
+    margin: 70px 14px 30px 14px;
+  }
+
+  .search__input {
+    margin: 20px auto 20px 12px;
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .search__button {
+    margin: 6px 6px 6px auto;
+    width: 80px;
+    height: 44px;
+    padding: 13px 10px;
+  }
 }

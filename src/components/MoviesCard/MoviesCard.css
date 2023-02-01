@@ -28,6 +28,10 @@
   color: #A0A0A0;
 }
 
+.card__image {
+  width: 100%;
+}
+
 .card__button {
   display: block;
   margin: 18px auto;
@@ -54,4 +58,19 @@
 .card__button_delete {
   color: rgba(0, 0, 0, 0);
   background-image:url(../../images/deleteButton.png);
+}
+
+@media screen and (max-width: 1024px) {
+  .card {
+    margin: 0 0 35px 0;
+    width: 342px;
+    min-height: 309px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .card__name {
+    font-size: 12px;
+    line-height: 18px;
+  }
 }

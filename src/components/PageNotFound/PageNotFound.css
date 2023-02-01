@@ -30,3 +30,34 @@
   text-decoration: none; 
   color: #3456F3;
 }
+
+@media screen and (max-width: 1024px) {
+
+  .not-found__title {
+    margin: 408px auto 0;
+  }
+
+}
+
+@media screen and (max-width: 425px) {
+
+  .not-found__title {
+    margin: 329px auto 0;
+
+    font-size: 80px;
+    line-height: 97px;
+ 
+  }
+
+  .not-found__desc {
+    margin: 10px auto 284px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+  
+  .not-found__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+}

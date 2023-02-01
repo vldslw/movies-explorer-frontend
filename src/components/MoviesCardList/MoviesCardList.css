@@ -8,3 +8,21 @@
 .card-list_saved {
   margin: 70px 70px 58px 70px;
 }
+
+@media screen and (max-width: 1024px) {
+  .card-list {
+    margin: 70px 30px -2px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .card-list {
+    margin: 40px 10px -2px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}

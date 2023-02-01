@@ -63,3 +63,24 @@ input:checked + .filter__slider:before {
   font-size: 13px;
   line-height: 18px;
 }
+
+@media screen and (max-width: 1024px) {
+  .filter {
+    margin: 0 30px 10px 30px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+
+  .filter {
+    margin: 0 14px 63px 14px;
+  }
+
+  .filter__desc {
+    margin: 0 0 0 14px;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 18px;
+  }
+
+}

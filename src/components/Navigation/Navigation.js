@@ -13,6 +13,7 @@ function Navigation() {
       <Link to="/profile" className='navigation__button navigation__button_grey navigation__button_bold'>
         Аккаунт
       </Link>
+      <div className='navigation__hamburger'></div>
     </nav>
   );
 }

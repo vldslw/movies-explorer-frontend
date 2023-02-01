@@ -30,3 +30,18 @@
   text-decoration: none; 
   color: #3456F3;
 } 
+
+@media screen and (max-width: 425px) {
+
+  .sign-bottom__button { 
+    width: 260px; 
+    font-size: 12px;
+    line-height: 15px;
+  } 
+
+  .sign-bottom__link-desc {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+}
