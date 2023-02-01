@@ -57,7 +57,7 @@
 
 .card__button_delete {
   color: rgba(0, 0, 0, 0);
-  background-image:url(../../images/deleteButton.png);
+  background-image:url(../../images/deleteButton.svg);
 }
 
 @media screen and (max-width: 1024px) {

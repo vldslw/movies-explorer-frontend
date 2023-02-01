@@ -35,3 +35,26 @@
   opacity: 0.8;
   transition: opacity 0.3s;
 }
+
+@media screen and (max-width: 1024px) {
+  .signing {
+    margin: 21px 30px 21px auto;
+  }
+}
+
+@media screen and (max-width: 425px) {
+
+  .signing {
+    margin: 24px 14px 24px auto;
+  }
+
+  .signing__button {
+    margin: 0 0 0 14px;
+    font-size: 10px;
+  }
+
+  .signing__button_blue {
+    padding: 0 12px;
+  }
+
+}

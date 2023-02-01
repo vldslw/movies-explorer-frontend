@@ -1,6 +1,7 @@
 .sign-header {
   width: 396px; 
-  margin: 70px auto 0 auto;
+  margin: 0 auto;
+  padding-top: 70px;
 }
 
 .sign-header__link:hover {
@@ -22,7 +23,7 @@
 
 @media screen and (max-width: 1024px) {
   .sign-header {
-    margin: 232px auto 0 auto;
+    padding-top: 232px;
   }
 }
 
@@ -36,7 +37,7 @@
   }
 
   .sign-header {
-    margin: 56px auto 0 auto;
+    padding-top: 56px;
   }
 
   .sign-header__text {

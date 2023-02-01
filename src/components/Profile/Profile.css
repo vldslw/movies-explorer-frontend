@@ -55,7 +55,7 @@
   line-height: 16px;
   border: none; 
   cursor: pointer; 
-  background: #FFFFFF;
+  background: #FAFAFA;
 }
 
 .profile__logout-button {
@@ -65,7 +65,7 @@
   font-size: 13px;
   line-height: 16px;
   color: #EE3465;
-  background: #FFFFFF;
+  background: #FAFAFA;
   border: none; 
   cursor: pointer; 
 }

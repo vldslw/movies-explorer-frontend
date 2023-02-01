@@ -21,6 +21,7 @@
 
 .filter__slider {
   position: absolute;
+  z-index: 0;
   border-radius: 20px;
   cursor: pointer;
   top: 0;

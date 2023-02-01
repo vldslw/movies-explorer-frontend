@@ -1,7 +1,19 @@
 import { Link } from 'react-router-dom'; 
 import './Navigation.css';
+import MenuPopup from '../MenuPopup/MenuPopup';
+import { useState } from "react"; 
 
 function Navigation() {
+  const [isMenuPopupOpen, setMenuPopupOpen] = useState(false); 
+
+  function handleMenuClick() { 
+    setMenuPopupOpen(true); 
+  } 
+
+  function closeMenuPopup() { 
+    setMenuPopupOpen(false); 
+  } 
+
   return (
     <nav className='navigation'>
       <Link to="/movies" className='navigation__button navigation__button_bold'>
@@ -13,7 +25,14 @@ function Navigation() {
       <Link to="/profile" className='navigation__button navigation__button_grey navigation__button_bold'>
         Аккаунт
       </Link>
-      <div className='navigation__hamburger'></div>
+      <button 
+      className='navigation__hamburger'
+      onClick={handleMenuClick}
+      />
+      <MenuPopup 
+        isOpen={isMenuPopupOpen}
+        onClose={closeMenuPopup}
+      />
     </nav>
   );
 }
