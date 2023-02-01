@@ -4,7 +4,7 @@ import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import MoviesCard from '../MoviesCard/MoviesCard';
+import savedCards from '../../utils/savedCards';
 
 
 function SavedMovies() {
@@ -17,21 +17,10 @@ function SavedMovies() {
         }
       />
       <SearchForm />
-      <MoviesCardList 
+      <MoviesCardList
+        cards={savedCards}
+        buttonClassName={'card__button_delete'}
         classType={'card-list_saved'} 
-        children={
-          <>
-            <MoviesCard 
-              buttonClassName={'card__button_delete'}
-            />
-            <MoviesCard 
-              buttonClassName={'card__button_delete'}
-            />
-            <MoviesCard 
-              buttonClassName={'card__button_delete'}
-            />
-          </>
-        }
       />
       <div className='saved-movies__divider'></div>
       <Footer /> 

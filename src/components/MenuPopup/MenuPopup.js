@@ -7,7 +7,7 @@ function MenuPopup({isOpen, onClose}) {
     <div className={`menu-popup ${isOpen ? "menu-popup_opened" : ""}`}> 
       <div className="menu-popup__container"> 
         <button 
-          class="menu-popup__close-button" 
+          className="menu-popup__close-button" 
           type="button"
           onClick={onClose} 
         /> 

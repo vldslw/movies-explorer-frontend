@@ -4,10 +4,12 @@ import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import MoviesCard from '../MoviesCard/MoviesCard';
 import More from '../More/More';
+import cards from '../../utils/cards';
 
 function Movies() {
+
+
   return (
     <>
       <Header 
@@ -18,33 +20,9 @@ function Movies() {
       />
       <SearchForm />
       <MoviesCardList
+        cards={cards}
+        buttonClassName={'card__button_saved'} 
         classType={''} 
-        children={
-          <>
-            <MoviesCard 
-              buttonClassName={'card__button_saved'}
-            />
-            <MoviesCard 
-              buttonClassName={'card__button_saved'}
-            />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard 
-              buttonClassName={'card__button_saved'}
-            />
-            <MoviesCard 
-              buttonClassName={'card__button_saved'}
-            />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard 
-              buttonClassName={'card__button_saved'}
-            />
-            <MoviesCard />
-          </>
-        }
       />
       <More />
       <Footer /> 
