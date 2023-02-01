@@ -1,36 +1,13 @@
 .techs {
+  padding: 100px 0 100px 0;
   max-width: 1280px;
   margin: 0 auto;
-}
-
-.heading-sec {
-  max-width: 1280px;
-  margin: 0 70px;
-  border-bottom: solid 1px #000000;
-}
-
-.heading-sec__title {
-  margin-top: 110px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 27px;
-  letter-spacing: -0.04em;
-}
-
-.techs__subtitle {
-  margin: 90px auto 26px auto;
-  font-weight: 400;
-  font-size: 50px;
-  line-height: 58px;
-  text-align: center;
-  letter-spacing: -0.04em;
+  background: #F5F5F5;
 }
 
 .techs__desc {
   margin: 0 auto 100px auto;
   max-width: 460px;
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -39,6 +16,8 @@
 }
 
 .techs__list {
+  padding: 0;
+  margin: 0;
   display: flex;
   justify-content: center;
 }
@@ -47,7 +26,6 @@
   height: 60px;
   width: 90px;
   margin-right: 10px;
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;

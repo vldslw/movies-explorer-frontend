@@ -1,13 +1,14 @@
 import './AboutMe.css';
 import Portfolio from '../Portfolio/Portfolio';
-import myPhoto from "../../images/logo.svg";
+import myPhoto from "../../images/myPhoto.jpeg";
+import Heading from '../Heading/Heading';
 
 function AboutMe() {
   return (
     <section className="about-me">
-      <div className="heading-sec">
-        <h2 id="about-me" className="heading-sec__title">Студент</h2>
-      </div>
+      <Heading
+        title={'Студент'}
+      />
       <div className='about-me__body'>
         <div className='about-me__text'>
           <h3 className='about-me__title'>Владислав</h3>

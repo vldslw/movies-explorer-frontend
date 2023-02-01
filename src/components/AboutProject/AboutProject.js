@@ -1,11 +1,12 @@
 import './AboutProject.css';
+import Heading from '../Heading/Heading';
 
 function AboutProject() {
   return (
     <section className="about-project">
-      <div className="section-heading">
-        <h2 id="about-project" className="section-heading__title">О проекте</h2>
-      </div>
+      <Heading
+        title={'О проекте'}
+      />
       <div className="about-project__columns">
         <div className="about-project__column">
           <h3 className="about-project__sublitle">Дипломный проект включал 5 этапов</h3>

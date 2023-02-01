@@ -3,7 +3,7 @@
   margin: 0 70px;
 }
 .portfolio__title {
-  font-style: normal;
+  margin: 0 0 50px;
   font-weight: 400;
   font-size: 18px;
   line-height: 20px;
@@ -16,9 +16,10 @@
 }
 
 .portfolio__link {
+  margin: 20px 0 0;
+  padding-bottom: 19px;
   text-decoration: none;
   color: #000000;
-  font-style: normal;
   font-weight: 400;
   font-size: 30px;
   line-height: 50px;
@@ -34,7 +35,7 @@
 }
 
 .portfolio__link:last-of-type {
-  font-style: normal;
+  padding-bottom: 0;
   font-weight: 400;
   font-size: 30px;
   line-height: 50px;
@@ -42,4 +43,8 @@
   border-bottom: none;
   display: flex;
   justify-content: space-between;
+}
+
+.portfolio__link-text {
+  margin: 0;
 }

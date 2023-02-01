@@ -59,7 +59,6 @@ input:checked + .filter__slider:before {
 
 .filter__desc {
   margin: 0 0 0 14px;
-  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;

@@ -14,6 +14,7 @@
 
 .header__link {
   margin: 18px auto 18px 70px;
+  line-height: 0;
 }
 
 .header__link:hover {
