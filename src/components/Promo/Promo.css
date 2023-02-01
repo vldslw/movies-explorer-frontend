@@ -22,5 +22,30 @@
 }
 
 .promo__logo {
+  
 
+}
+
+@media screen and (max-width: 1024px) {
+  .promo {
+    min-height: 784px;
+    background-position: right 50% top 224px;
+  }
+
+  .promo__title {
+    margin: 326px 0 342px 0;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .promo {
+    min-height: 570px;
+    background-position: right 50% top 142px;
+    background-size: 248px;
+  }
+  .promo__title {
+    margin: 207px 0 246px 0;
+    font-size: 31px;
+    line-height: 39px;
+  }
 }

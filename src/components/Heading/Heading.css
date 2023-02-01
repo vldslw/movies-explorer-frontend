@@ -12,11 +12,21 @@
   letter-spacing: -0.04em;
 }
 
-.techs__subtitle {
-  margin: 90px auto 26px auto;
-  font-weight: 400;
-  font-size: 50px;
-  line-height: 58px;
-  text-align: center;
-  letter-spacing: -0.04em;
+@media screen and (max-width: 1024px) {
+  .heading-sec {
+    margin: 0 50px 0;
+  }
+}
+
+@media screen and (max-width: 425px) {
+
+  .heading-sec {
+    margin: 0 18px 0;
+  }
+
+  .heading-sec__title {
+    margin: 0 0 28px 0;
+    font-size: 18px;
+    line-height: 22px;
+  }
 }
