@@ -1,9 +1,9 @@
 import './MoviesCardList.css';
 
-function MoviesCardList({ children }) {
+function MoviesCardList({ children, classType }) {
 
   return (
-    <section className="card-list">
+    <section className={`card-list ${classType}`}>
       {children}
     </section>
   );

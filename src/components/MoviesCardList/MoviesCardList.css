@@ -1,6 +1,10 @@
 .card-list {
-  margin: 70px 70px 10px 70px;
+  margin: 70px 70px -22px 70px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.card-list_saved {
+  margin: 70px 70px 58px 70px;
 }

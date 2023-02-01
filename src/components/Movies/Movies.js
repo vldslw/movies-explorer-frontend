@@ -17,7 +17,8 @@ function Movies() {
         }
       />
       <SearchForm />
-      <MoviesCardList 
+      <MoviesCardList
+        classType={''} 
         children={
           <>
             <MoviesCard 

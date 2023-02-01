@@ -26,6 +26,8 @@
 }
 
 .search__button {
+  width: 100px;
+  height: 52px;
   margin: 10px;
   border: none;
   padding: 17px 20px;

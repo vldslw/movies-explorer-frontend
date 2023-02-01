@@ -18,6 +18,7 @@ function SavedMovies() {
       />
       <SearchForm />
       <MoviesCardList 
+        classType={'card-list_saved'} 
         children={
           <>
             <MoviesCard 
