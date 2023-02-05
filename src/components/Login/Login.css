@@ -6,7 +6,6 @@
 .login__form { 
   display: flex; 
   flex-direction: column; 
-  margin-bottom: 80px; 
 } 
 
 .login__input { 
@@ -65,6 +64,10 @@
   .login__placeholder { 
     width: 260px; 
   } 
+
+  .login__error { 
+    width: 260px; 
+  }
 
   .login__error:last-of-type { 
     margin: 6px auto 290px; 

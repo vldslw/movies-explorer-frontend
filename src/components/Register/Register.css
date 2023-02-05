@@ -64,6 +64,11 @@
     width: 260px; 
   } 
 
+  .register__error { 
+    width: 260px; 
+  } 
+  
+
   .register__error:last-of-type { 
     margin: 6px auto 222px; 
   } 
