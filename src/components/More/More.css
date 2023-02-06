@@ -22,3 +22,20 @@
   opacity: 0.8;
   transition: opacity 0.3s;
 }
+
+@media screen and (max-width: 1024px) {
+  .more {
+    margin: 0 30px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .more {
+    margin: 0 10px;
+  }
+
+  .more__button {
+    min-width: 240px;
+  }
+
+}

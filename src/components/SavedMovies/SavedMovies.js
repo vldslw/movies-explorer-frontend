@@ -16,13 +16,15 @@ function SavedMovies() {
           <Navigation />
         }
       />
-      <SearchForm />
-      <MoviesCardList
-        cards={savedCards}
-        buttonClassName={'card__button_delete'}
-        classType={'card-list_saved'} 
-      />
-      <div className='saved-movies__divider'></div>
+      <main className='content'>
+        <SearchForm />
+        <MoviesCardList
+          cards={savedCards}
+          buttonClassName={'card__button_delete'}
+          classType={'card-list_saved'} 
+        />
+        <div className='saved-movies__divider'></div>
+      </main>
       <Footer /> 
     </>
   );

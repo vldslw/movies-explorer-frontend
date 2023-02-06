@@ -47,6 +47,12 @@
   display: none;
 }
 
+@media screen and (max-width: 1024px) {
+  .navigation {
+    margin: 15px 30px 15px auto;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .navigation__hamburger {
     display: block;
@@ -54,11 +60,6 @@
 
   .navigation__button {
     display: none;
-  }
-
-  .navigation {
-    margin: 15px 30px 15px auto;
-    display: flex;
   }
 }
 

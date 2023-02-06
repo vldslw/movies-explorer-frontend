@@ -1,5 +1,8 @@
-.saved-movies__divider {
+.content {
   max-width: 1280px;
   margin: 0 auto;
+}
+
+.saved-movies__divider {
   min-height: 140px;
 }

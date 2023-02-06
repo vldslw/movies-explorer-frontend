@@ -18,13 +18,15 @@ function Movies() {
           <Navigation />
         }
       />
-      <SearchForm />
-      <MoviesCardList
-        cards={cards}
-        buttonClassName={'card__button_saved'} 
-        classType={''} 
-      />
-      <More />
+      <main className='content'>
+        <SearchForm />
+        <MoviesCardList
+          cards={cards}
+          buttonClassName={'card__button_saved'} 
+          classType={''} 
+        />
+        <More />
+      </main>
       <Footer /> 
     </>
   );
