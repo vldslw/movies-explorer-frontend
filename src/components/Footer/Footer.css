@@ -43,8 +43,11 @@
   justify-content: space-between;
 }
 
-.footer__link {
+.footer__item {
   margin-left: 20px;
+}
+
+.footer__link {
   text-decoration: none;
   color: #000000;
 }

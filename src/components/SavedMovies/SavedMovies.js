@@ -21,9 +21,9 @@ function SavedMovies() {
         <MoviesCardList
           cards={savedCards}
           buttonClassName={'card__button_delete'}
-          classType={'card-list_saved'} 
+          classType={'cards__list_saved'}
         />
-        <div className='saved-movies__divider'></div>
+        <div className='divider'></div>
       </main>
       <Footer /> 
     </>
