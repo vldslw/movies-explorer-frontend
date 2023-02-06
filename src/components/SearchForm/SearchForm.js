@@ -6,9 +6,12 @@ function SearchForm() {
     <section className="search">
       <form className='search__form'>
         <input 
-          type='text'
+          type="text"
+          id="search"
+          name="search"
           className='search__input'
           placeholder='Фильм'
+          required
         />
         <button className='search__button'>Поиск</button>
       </form>
@@ -17,4 +20,4 @@ function SearchForm() {
   );
 }
 
-export default SearchForm;
+export default SearchForm; 

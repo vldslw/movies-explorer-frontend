@@ -15,7 +15,7 @@ function Register() {
         > 
           <span className="register__placeholder">Имя</span>
           <input
-            type="name"
+            type="text"
             id="name"
             name="name"
             className="register__input register__input_type_name"

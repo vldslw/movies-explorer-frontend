@@ -9,6 +9,11 @@
   border-radius: 8px;
 }
 
+.search__form:focus-within {
+  border: 1.5px solid #3456F3; 
+}
+
+
 .search__input {
   padding: 0;
   margin: 25px auto 25px 25px;
