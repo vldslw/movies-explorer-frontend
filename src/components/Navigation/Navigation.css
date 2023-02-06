@@ -47,6 +47,11 @@
   display: none;
 }
 
+.navigation__hamburger:hover {
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
 @media screen and (max-width: 1024px) {
   .navigation {
     margin: 15px 30px 15px auto;
