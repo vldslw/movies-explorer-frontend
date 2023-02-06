@@ -93,13 +93,13 @@
     flex-direction: column;
   }
 
-  .footer__link {
+  .footer__item {
     margin-left: 0;
     margin-bottom: 12px;
     align-self: center;
   }
 
-  .footer__link:last-of-type {
+  .footer__item:last-of-type {
     margin-bottom: 0;
   }
 
