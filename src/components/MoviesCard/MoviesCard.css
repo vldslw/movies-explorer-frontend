@@ -1,10 +1,11 @@
 .card {
-  margin: 0 0 32px 0;
-  width: 360px;
-  min-height: 319px;
+  width: 100%;
+  margin: 0;
   background: #FFFFFF;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
   border-radius: 6px;
+  overflow: hidden;
+  position: relative;
 }
 
 .card__desc {
@@ -14,14 +15,19 @@
 }
 
 .card__name {
-  margin: 0;
+  margin: 0 14px 0 0;
+  max-width: 240px;
   font-weight: 500;
   font-size: 15px;
   line-height: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .card__duration {
   margin: 0;
+  white-space: nowrap;
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
@@ -30,6 +36,9 @@
 
 .card__image {
   width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
 }
 
 .card__button {
@@ -61,15 +70,23 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .card {
-    margin: 0 0 35px 0;
-    width: 342px;
-    min-height: 309px;
+  .card__image {
+    height: 190px;
   }
+
+  .card__name {
+    max-width: 224px;
+  }
+
 }
 
 @media screen and (max-width: 425px) {
+  .card__image {
+    height: 168px;
+  }
+
   .card__name {
+    max-width: 200px;
     font-size: 12px;
     line-height: 18px;
   }

@@ -1,5 +1,5 @@
 .filter {
-  margin: 0 70px 10px 70px;
+  margin: 0 0 10px;
   padding-bottom: 43px;
   display: flex;
   justify-content: start;
@@ -67,14 +67,14 @@ input:checked + .filter__slider:before {
 
 @media screen and (max-width: 1024px) {
   .filter {
-    margin: 0 30px 10px 30px;
+    margin: 0 0 10px;
   }
 }
 
 @media screen and (max-width: 425px) {
 
   .filter {
-    margin: 0 14px 63px 14px;
+    margin: 0 0 63px;
   }
 
   .filter__desc {
