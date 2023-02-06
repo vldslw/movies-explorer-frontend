@@ -1,6 +1,5 @@
 .heading-sec {
-  max-width: 1280px;
-  margin: 0 70px 0;
+  margin: 0;
   border-bottom: solid 1px #000000;
 }
 
@@ -12,17 +11,7 @@
   letter-spacing: -0.04em;
 }
 
-@media screen and (max-width: 1024px) {
-  .heading-sec {
-    margin: 0 50px 0;
-  }
-}
-
 @media screen and (max-width: 425px) {
-
-  .heading-sec {
-    margin: 0 18px 0;
-  }
 
   .heading-sec__title {
     margin: 0 0 28px 0;

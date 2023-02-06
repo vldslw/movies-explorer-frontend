@@ -17,11 +17,13 @@ function Main() {
           <Signing />
         }
       />
-      <Promo />
-      <NavTab />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
+      <main className='content'>
+        <Promo />
+        <NavTab />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+      </main>
       <Footer /> 
     </>
   );
