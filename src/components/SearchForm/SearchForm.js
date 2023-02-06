@@ -3,7 +3,7 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 function SearchForm() {
   return (
-    <section className="search">
+    <section className="search" aria-label="Секция с формой поиска">
       <form className='search__form'>
         <input 
           type="text"

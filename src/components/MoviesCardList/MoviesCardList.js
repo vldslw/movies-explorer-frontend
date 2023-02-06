@@ -9,7 +9,7 @@ function MoviesCardList({ cards, buttonClassName, classType }) {
 
   return (
     
-    <section className='cards'>
+    <section className='cards' aria-label="Секция с фильмами">
       <div className={`cards__list ${classType}`}>
         { isLoading ? <Preloader /> : cards.map((card) => 
           <MoviesCard 

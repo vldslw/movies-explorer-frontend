@@ -4,7 +4,7 @@ function NavTab() {
   return (
     <section className="nav-tab">
       <nav>
-          <ul className="nav-tab__links">
+          <ul className="nav-tab__links" aria-label="Секция нафигации по странице">
             <li className="nav-tab__item">
               <a href="#about-project" className="nav-tab__link">О проекте</a>
             </li>
