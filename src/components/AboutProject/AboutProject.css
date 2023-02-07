@@ -1,0 +1,152 @@
+.about-project {
+  margin: 110px 70px 105px;
+}
+
+.about-project__columns {
+  margin: 70px 0 110px;
+  display: flex;
+}
+
+.about-project__column {
+  max-width: 550px;
+}
+
+.about-project__column:first-of-type {
+  margin-right: 40px;
+}
+
+.about-project__sublitle {
+  margin: 0 0 26px 0;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+}
+
+.about-project__desc {
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.about-project__timeline {
+  margin: 0;
+  display: grid;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: repeat(2, 36px);
+  grid-template-areas:
+    "one-week four-weeks"
+    "back-end front-end";
+}
+
+.about-project__timeline-item1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 9px 0 9px;
+  grid-area: one-week;
+  color: #FFFFFF;
+  background-color: #3456F3;
+  text-align: center;
+}
+
+.about-project__timeline-item2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 9px 0 9px;
+  background-color: #F2F2F2;
+  text-align: center;
+}
+
+.about-project__timeline-item3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding-top: 14px;
+  color: #A0A0A0;
+  text-align: center;
+}
+
+.about-project__timeline-item4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding-top: 14px;
+  color: #A0A0A0;
+  text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .about-project {
+    margin: 90px 50px 85px;
+  }
+
+  .about-project__columns {
+    margin: 70px 0 93px;
+  }
+
+  .about-project__sublitle {
+    margin: 0 0 22px 0;
+  }
+
+  .about-project__desc {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+
+  .about-project {
+    margin: 70px 18px 55px;
+  }
+
+  .about-project__columns {
+    margin: 60px 0 4px;
+    flex-direction: column;
+  }
+
+  .about-project__sublitle {
+    margin: 0 0 16px 0;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .about-project__desc {
+    margin-bottom: 56px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-project__timeline {
+    font-size: 11px;
+    line-height: 13px;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .about-project__timeline-item1 {
+    padding: 11px 0;
+  }
+  
+  .about-project__timeline-item2 {
+    padding: 11px 0;
+  }
+
+  .about-project__timeline-item3 {
+    padding-top: 0;
+  }
+  
+  .about-project__timeline-item4 {
+    padding-top: 0;
+  }
+
+}
