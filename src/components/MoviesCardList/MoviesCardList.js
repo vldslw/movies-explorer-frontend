@@ -1,11 +1,12 @@
+import React, {useState} from 'react';
 import './MoviesCardList.css';
 import Preloader from '../Preloader/Preloader';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function MoviesCardList({ cards, buttonClassName, classType }) {
+function MoviesCardList({ buttonClassName, classType }) {
 
-  const isLoading = false;
-
+  const [cards, setCards] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     

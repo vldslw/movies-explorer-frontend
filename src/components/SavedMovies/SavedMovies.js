@@ -4,7 +4,6 @@ import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import savedCards from '../../utils/savedCards';
 
 
 function SavedMovies() {
@@ -19,7 +18,6 @@ function SavedMovies() {
       <main className='content'>
         <SearchForm />
         <MoviesCardList
-          cards={savedCards}
           buttonClassName={'card__button_delete'}
           classType={'cards__list_saved'}
         />

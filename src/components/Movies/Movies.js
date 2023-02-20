@@ -5,7 +5,6 @@ import Navigation from '../Navigation/Navigation';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import More from '../More/More';
-import cards from '../../utils/cards';
 
 function Movies() {
 
@@ -21,7 +20,6 @@ function Movies() {
       <main className='content'>
         <SearchForm />
         <MoviesCardList
-          cards={cards}
           buttonClassName={'card__button_saved'} 
           classType={''} 
         />

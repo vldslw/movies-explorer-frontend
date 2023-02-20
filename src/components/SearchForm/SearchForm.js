@@ -1,19 +1,22 @@
+import React, {useState} from 'react';
 import './SearchForm.css';
+import Input from '../Input/Input';
+import Button from '../Button/Button';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 function SearchForm() {
+
+  const [query, setQuery] = useState('');
+
+  const handleClick = () => {
+    alert(query);
+  }
+
   return (
     <section className="search" aria-label="Секция с формой поиска">
       <form className='search__form'>
-        <input 
-          type="text"
-          id="search"
-          name="search"
-          className='search__input'
-          placeholder='Фильм'
-          required
-        />
-        <button className='search__button'>Поиск</button>
+        <Input query={query} setQuery={setQuery} placeholder='Фильм'/>
+        <Button title='Поиск' handleClick={handleClick}/>
       </form>
       <FilterCheckbox />
     </section>
