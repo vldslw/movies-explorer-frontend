@@ -3,13 +3,24 @@ import './SearchForm.css';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
+import moviesApi from '../../utils/MoviesApi';
 
-function SearchForm() {
+function SearchForm({ setCards, setIsLoading }) {
 
   const [query, setQuery] = useState('');
+  
 
-  const handleClick = () => {
-    alert(query);
+  const handleClick = async () => {
+    try {
+      setIsLoading(true)
+      const res = await moviesApi.getMovies();
+      setCards(res);
+      console.log(res);
+    } catch (e) {
+      console.error(e)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (

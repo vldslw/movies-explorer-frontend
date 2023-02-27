@@ -1,14 +1,16 @@
+import React, {useState} from 'react';
 import './Movies.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import More from '../More/More';
 
 function Movies() {
 
-
+  const [cards, setCards] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+ 
   return (
     <>
       <Header 
@@ -18,12 +20,13 @@ function Movies() {
         }
       />
       <main className='content'>
-        <SearchForm />
+        <SearchForm setCards={setCards} setIsLoading={setIsLoading}/>
         <MoviesCardList
+          cards={cards}
+          isLoading={isLoading}
           buttonClassName={'card__button_saved'} 
           classType={''} 
         />
-        <More />
       </main>
       <Footer /> 
     </>
