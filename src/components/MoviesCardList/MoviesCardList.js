@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './MoviesCardList.css';
 import Preloader from '../Preloader/Preloader';
 import MoviesCard from '../MoviesCard/MoviesCard';
@@ -6,12 +6,22 @@ import More from '../More/More';
 
 function MoviesCardList({ buttonClassName, classType, cards, isLoading }) {
 
+  const [items, setItems] = useState([]);
+
+  useEffect (() => {
+    setItems(cards.slice(0, 3));
+  }, [cards])
+
+  const showMore = () => {
+    setItems([...items, ...cards.slice(items.length, items.length + 3)]);
+  };
+
   return (  
     
     <section className='cards' aria-label="Секция с фильмами">
       {isLoading ? <Preloader /> : 
       <div className={`cards__list ${classType}`}>
-      { cards.map((card) => 
+      { items.map((card) => 
         <MoviesCard 
          key={card.id}
          name={card.nameRU}
@@ -22,7 +32,7 @@ function MoviesCardList({ buttonClassName, classType, cards, isLoading }) {
         />
       )}
       </div>}
-      { (cards.length > 0) ? <More /> : <></>}
+      { items.length < cards.length && <More showMore={showMore}/>}
     </section>
   );
 }
