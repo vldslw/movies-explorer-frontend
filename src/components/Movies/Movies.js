@@ -12,12 +12,25 @@ function Movies() {
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState('');
+  const [checkboxState, setCheckboxState] = useState(false);
 
   const filter = (searchWord, data) => {
-    return data.filter(({ nameRU }) => 
-      nameRU.toLowerCase().includes(searchWord.toLowerCase())
-    );
+    if (checkboxState) {
+      return data.filter(({ nameRU, duration }) =>
+        nameRU.toLowerCase().includes(searchWord.toLowerCase()) && duration < 40
+      );
+    } else {
+      return data.filter(({ nameRU }) =>
+        nameRU.toLowerCase().includes(searchWord.toLowerCase())
+      );
+    }
+    
   }
+  
+  const handleChange = () => {
+    setCheckboxState((current) => !current);
+  }
+  
 
   const handleClick = async (event) => {
     try {
@@ -44,7 +57,7 @@ function Movies() {
         }
       />
       <main className='content'>
-        <SearchForm setCards={setCards} setIsLoading={setIsLoading} query={query} setQuery={setQuery} handleClick={handleClick}/>
+        <SearchForm setCards={setCards} setIsLoading={setIsLoading} query={query} setQuery={setQuery} handleClick={handleClick} handleChange={handleChange}/>
         <MoviesCardList
           cards={cards}
           isLoading={isLoading}
