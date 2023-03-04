@@ -4,12 +4,12 @@ import Preloader from '../Preloader/Preloader';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import More from '../More/More';
 
-function MoviesCardList({ buttonClassName, classType, cards, isLoading }) {
+function MoviesCardList({ buttonClassName, classType, cards, isLoading, notFound, error }) {
 
   const [items, setItems] = useState([]);
 
   useEffect (() => {
-    setItems(cards.slice(0, 3));
+    setItems(cards.slice(0, 12));
   }, [cards])
 
   const showMore = () => {
@@ -32,6 +32,8 @@ function MoviesCardList({ buttonClassName, classType, cards, isLoading }) {
         />
       )}
       </div>}
+      {notFound && <p className='cards__message'>Ничего не найдено</p>}
+      {error && <p className='cards__message'>Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</p>}
       { items.length < cards.length && <More showMore={showMore}/>}
     </section>
   );

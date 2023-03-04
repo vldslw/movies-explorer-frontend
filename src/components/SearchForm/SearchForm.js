@@ -4,7 +4,7 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
-function SearchForm({ setCards, setIsLoading, query, setQuery, handleClick, handleChange }) { 
+function SearchForm({ setCards, setIsLoading, query, setQuery, handleClick, handleChange, checkboxState }) { 
 
   return (
     <section className="search" aria-label="Секция с формой поиска">
@@ -12,7 +12,7 @@ function SearchForm({ setCards, setIsLoading, query, setQuery, handleClick, hand
         <Input query={query} setQuery={setQuery} placeholder='Фильм'/>
         <Button title='Поиск' handleClick={handleClick}/>
       </form>
-      <FilterCheckbox handleChange={handleChange}/>
+      <FilterCheckbox handleChange={handleChange} checkboxState={checkboxState}/>
     </section>
   );
 }
