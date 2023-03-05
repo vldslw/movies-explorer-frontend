@@ -4,7 +4,7 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
-function SearchForm({ setCards, setIsLoading, query, setQuery, handleClick, handleChange, checkboxState }) { 
+function SearchForm({ query, setQuery, handleClick, handleChange, checkboxState }) { 
 
   return (
     <section className="search" aria-label="Секция с формой поиска">

@@ -84,7 +84,6 @@ function Movies() {
   const handleChange = () => {
     setCheckboxState((current) => !current);
   }
-  
 
   const handleClick = async (event) => {
     try {
@@ -94,6 +93,7 @@ function Movies() {
       setCards([]);
       setIsLoading(true)
       const res = await moviesApi.getMovies();
+      console.log(res);
       const filteredRes = filter(query, res);
       if (filteredRes.length === 0) {
         setNotFound(true);
@@ -118,7 +118,7 @@ function Movies() {
         }
       />
       <main className='content'>
-        <SearchForm setCards={setCards} setIsLoading={setIsLoading} query={query} setQuery={setQuery} handleClick={handleClick} handleChange={handleChange} checkboxState={checkboxState}/>
+        <SearchForm query={query} setQuery={setQuery} handleClick={handleClick} handleChange={handleChange} checkboxState={checkboxState}/>
         <MoviesCardList
           cards={cards}
           isLoading={isLoading}
