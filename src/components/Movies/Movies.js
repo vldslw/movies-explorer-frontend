@@ -121,10 +121,10 @@ function Movies() {
         <SearchForm query={query} setQuery={setQuery} handleClick={handleClick} handleChange={handleChange} checkboxState={checkboxState}/>
         <MoviesCardList
           cards={cards}
+          cardType={'default'}
           isLoading={isLoading}
           notFound={notFound}
           error={error}
-          buttonClassName={'card__button_saved'} 
           classType={''} 
         />
       </main>

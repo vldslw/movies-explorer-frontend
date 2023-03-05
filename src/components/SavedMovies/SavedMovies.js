@@ -23,7 +23,7 @@ function SavedMovies() {
         setNotFound(false);
         setError(false);
         setIsLoading(true)
-        const res = await moviesApi.getMovies();
+        const res = await mainApi.getMovies();
         console.log(res);
         if (res.length === 0) {
           setNotFound(true);
@@ -86,10 +86,10 @@ function SavedMovies() {
         <SearchForm query={query} setQuery={setQuery} handleClick={handleClick} handleChange={handleChange} checkboxState={checkboxState} />
         <MoviesCardList
           cards={filteredCards}
+          cardType={'saved'}
           isLoading={isLoading}
           notFound={notFound}
           error={error}
-          buttonClassName={'card__button_delete'}
           classType={'cards__list_saved'}
         />
         <div className='divider'></div>

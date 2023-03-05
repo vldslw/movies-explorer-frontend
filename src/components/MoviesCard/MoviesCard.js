@@ -1,7 +1,16 @@
 import './MoviesCard.css';
-import moviePic from '../../images/moviePic.png'
 
-function MoviesCard({ name, duration, url, isSaved, buttonClassName}) {
+function MoviesCard({ card, cardType, name, duration, url, onCardLike}) {
+
+  const isSaved = false;
+
+  function handleLikeClick() {
+    onCardLike(card);
+  }
+
+  function handleDeleteClick() {
+    console.log('Удалить');
+  }
   
   return (
     <article className="card">
@@ -9,8 +18,13 @@ function MoviesCard({ name, duration, url, isSaved, buttonClassName}) {
         <h2 className='card__name'>{name}</h2>
         <p className='card__duration'>{duration}</p>
       </div>
-      <img className="card__image" src={`https://api.nomoreparties.co/${url}`} alt={name} />
-      <button className={`card__button ${isSaved ? buttonClassName : ''}`}>Сохранить</button>
+      <img className="card__image" src={(cardType === 'default') ? `https://api.nomoreparties.co/${url}`: url} alt={name} />
+      { (cardType === 'default') 
+      ? 
+      <button className={`card__button ${isSaved ? 'card__button_saved' : ''}`} onClick={handleLikeClick}>Сохранить</button>
+      : 
+      <button className='card__button card__button_delete' onClick={handleDeleteClick}>Сохранить</button> 
+      }
     </article>
   );
 }
