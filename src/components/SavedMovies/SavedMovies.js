@@ -12,10 +12,12 @@ import moviesApi from '../../utils/MoviesApi';
 function SavedMovies() {
 
   const [savedCards, setSavedCards] =  useState([]);
-  const [filteredCards, setFilteredCards] =  useState([]);
+  const [displayedCards, setDisplayedCards] =  useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [notFound, setNotFound] = useState(false);
+  const [query, setQuery] = useState('');
+  const [checkboxState, setCheckboxState] = useState(false);
 
   useEffect(() => { 
     async function fetchData() {
@@ -24,12 +26,11 @@ function SavedMovies() {
         setError(false);
         setIsLoading(true)
         const res = await mainApi.getMovies();
-        console.log(res);
         if (res.length === 0) {
           setNotFound(true);
         } else {
           setSavedCards(res);
-          setFilteredCards(res);
+          setDisplayedCards(savedCards);
         }
       } catch (e) {
         console.error(e)
@@ -40,13 +41,6 @@ function SavedMovies() {
     }
     fetchData();
   }, []);
-  
-  const [query, setQuery] = useState('');
-  const [checkboxState, setCheckboxState] = useState(false);
-
-    const handleChange = () => {
-      setCheckboxState((current) => !current);
-    }
 
   const filter = (searchWord, data) => {
     if (checkboxState) {
@@ -61,16 +55,40 @@ function SavedMovies() {
     
   }
 
+  useEffect(() => { 
+    setDisplayedCards(savedCards);
+  }, [savedCards]);
+
+  const handleChange = () => {
+    setCheckboxState((current) => !current);
+  }
+
   const handleClick = (event) => {
     event.preventDefault();
     setNotFound(false);
     setError(false);
-    setFilteredCards([]);
     const filteredRes = filter(query, savedCards);
     if (filteredRes.length === 0) {
+      setDisplayedCards(filteredRes);
       setNotFound(true);
     } else {
-      setFilteredCards(filteredRes);
+      setDisplayedCards(filteredRes);
+    }
+  }
+
+  const onCardDelete = async (id) => {
+    try {
+      await mainApi.deleteMovie(id);
+      const res = await mainApi.getMovies();
+      if (res.length === 0) {
+        setSavedCards(res);
+        setNotFound(true);
+      } else {
+        setSavedCards(res);
+        setDisplayedCards(savedCards);
+      }
+    } catch (e) {
+      console.error(e)
     }
   }
 
@@ -85,12 +103,14 @@ function SavedMovies() {
       <main className='content'>
         <SearchForm query={query} setQuery={setQuery} handleClick={handleClick} handleChange={handleChange} checkboxState={checkboxState} />
         <MoviesCardList
-          cards={filteredCards}
+          savedCards={savedCards}
+          cards={displayedCards}
           cardType={'saved'}
           isLoading={isLoading}
           notFound={notFound}
           error={error}
           classType={'cards__list_saved'}
+          onCardDelete={onCardDelete}
         />
         <div className='divider'></div>
       </main>

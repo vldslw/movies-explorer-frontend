@@ -1,15 +1,39 @@
+import React, {useState, useEffect} from 'react';
 import './MoviesCard.css';
+import mainApi from '../../utils/MainApi';
 
-function MoviesCard({ card, cardType, name, duration, url, onCardLike}) {
+function MoviesCard({ card, savedCards, cardType, name, duration, url, onCardLike, onCardDelete}) {
 
-  const isSaved = false;
+  // let isSaved = (cardType === 'default') ? savedCards.some((c) => c.movieId === card.id) : true;
+
+  const [isSaved, setIsSaved] = useState(false);
+
+  useEffect(() => { 
+    if (cardType === 'default') {
+      const res = savedCards.some((c) => c.movieId === card.id);
+      setIsSaved(res);
+    } else {
+      setIsSaved(true);
+    }
+  }, [savedCards]);
+
+  console.log(savedCards);
 
   function handleLikeClick() {
     onCardLike(card);
+    setIsSaved((current) => !current);
   }
 
   function handleDeleteClick() {
-    console.log('Удалить');
+    if (cardType === 'default') {
+      let cardId = savedCards.find((c) => c.movieId === card.id)._id
+      onCardDelete(cardId);
+      setIsSaved((current) => !current);
+    } else {
+      onCardDelete(card._id);
+      setIsSaved((current) => !current);
+    }
+    
   }
   
   return (
@@ -19,11 +43,11 @@ function MoviesCard({ card, cardType, name, duration, url, onCardLike}) {
         <p className='card__duration'>{duration}</p>
       </div>
       <img className="card__image" src={(cardType === 'default') ? `https://api.nomoreparties.co/${url}`: url} alt={name} />
-      { (cardType === 'default') 
+      { isSaved  
       ? 
-      <button className={`card__button ${isSaved ? 'card__button_saved' : ''}`} onClick={handleLikeClick}>Сохранить</button>
+      <button className={`card__button ${(cardType === 'default') ? 'card__button_saved' : 'card__button_delete' }`} onClick={handleDeleteClick}>Сохранить</button> 
       : 
-      <button className='card__button card__button_delete' onClick={handleDeleteClick}>Сохранить</button> 
+      <button className='card__button' onClick={handleLikeClick}>Сохранить</button>
       }
     </article>
   );

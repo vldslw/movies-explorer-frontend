@@ -6,8 +6,53 @@ import Navigation from '../Navigation/Navigation';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import moviesApi from '../../utils/MoviesApi';
+import mainApi from '../../utils/MainApi';
 
 function Movies() {
+
+  // const [cards, setCards] =  useState([]);
+  // const [displayedCards, setDisplayedCards] =  useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [notFound, setNotFound] = useState(() => {
+    let data = null;
+    
+    try {
+      data = localStorage.getItem('notFound');
+    } catch (e) {
+      console.log(e)
+    };
+    return (typeof JSON.parse(data) === 'boolean') ? JSON.parse(data) : false;
+  });
+
+    // useEffect(() => { 
+    //   async function fetchData() {
+    //     try {
+    //       setNotFound(false);
+    //       setError(false);
+    //       setIsLoading(true)
+    //       const localCards = await JSON.parse(localStorage.getItem('cards'));
+    //       if (Array.isArray(localCards)) {
+    //         setCards(localCards);
+    //       } else {
+            
+    //       }
+    //       const res = await mainApi.getMovies();
+    //       if (res.length === 0) {
+    //         setNotFound(true);
+    //       } else {
+    //         setSavedCards(res);
+    //         setDisplayedCards(savedCards);
+    //       }
+    //     } catch (e) {
+    //       console.error(e)
+    //       setError(true);
+    //     } finally {
+    //       setIsLoading(false)
+    //     }
+    //   }
+    //   fetchData();
+    // }, []);
 
   const [cards, setCards] = useState(() => {
     let data = null;
@@ -18,19 +63,34 @@ function Movies() {
       console.log(e)
     };
     return Array.isArray(data) ? data : [];
-    });
-  const [isLoading, setIsLoading] = useState(false);
-  const [notFound, setNotFound] = useState(() => {
-    let data = null;
-    
-    try {
-      data = localStorage.getItem('notFound');
-    } catch (e) {
-      console.log(e)
-    };
-    return (typeof JSON.parse(data) === 'boolean') ? JSON.parse(data) : false;
-    });
-  const [error, setError] = useState(false);
+  });
+
+  // useEffect(() => { 
+  //   async function fetchData() {
+  //     try {
+  //       console.log('Карты взялись из хранилища');
+  //       const res = await JSON.parse(localStorage.getItem('cards'));
+  //       const query = await localStorage.getItem('query');
+  //       setQuery(query);
+  //       const filteredRes = filter(query, res);
+  //       if (filteredRes.length === 0) {
+  //         setNotFound(true);
+  //       } else {
+  //         setCards(filteredRes);
+  //       }
+  //       if (res.length === 0) {
+  //         setNotFound(true);
+  //       } else {
+  //         setFilteredCards(res);
+  //       }
+  //     } catch (e) {
+  //       console.error(e)
+  //       setError(true);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
+  
   const [query, setQuery] = useState(() => {
     let data = null;
     
@@ -41,6 +101,7 @@ function Movies() {
     };
     return (typeof data === 'string') ? data : '';
     });
+
   const [checkboxState, setCheckboxState] = useState(() => {
     let data = null;
     
@@ -51,6 +112,20 @@ function Movies() {
     };
     return (typeof JSON.parse(data) === 'boolean') ? JSON.parse(data) : false;
     });
+
+  const [savedCards, setSavedCards] = useState([]);
+
+  useEffect(() => { 
+    async function fetchData() {
+      try {
+        const res = await mainApi.getMovies();
+        setSavedCards(res);
+      } catch (e) {
+        console.error(e)
+      }
+    }
+    fetchData();
+  }, [cards]);
 
   useEffect (() => {
     localStorage.setItem('query', query);
@@ -93,7 +168,6 @@ function Movies() {
       setCards([]);
       setIsLoading(true)
       const res = await moviesApi.getMovies();
-      console.log(res);
       const filteredRes = filter(query, res);
       if (filteredRes.length === 0) {
         setNotFound(true);
@@ -107,7 +181,36 @@ function Movies() {
       setIsLoading(false)
     }
   }
-  
+
+  const onCardLike = async (data) => {
+    try {
+      await mainApi.addMovie(data);
+      const res = await moviesApi.getMovies();
+      const filteredRes = filter(query, res)
+      if (filteredRes.length === 0) {
+        setNotFound(true);
+      } else {
+        setCards(filteredRes);
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  const onCardDelete = async (id) => {
+    try {
+      await mainApi.deleteMovie(id);
+      const res = await moviesApi.getMovies();
+      const filteredRes = filter(query, res)
+      if (filteredRes.length === 0) {
+        setNotFound(true);
+      } else {
+        setCards(filteredRes);
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  }
  
   return (
     <>
@@ -121,11 +224,14 @@ function Movies() {
         <SearchForm query={query} setQuery={setQuery} handleClick={handleClick} handleChange={handleChange} checkboxState={checkboxState}/>
         <MoviesCardList
           cards={cards}
+          savedCards={savedCards}
           cardType={'default'}
           isLoading={isLoading}
           notFound={notFound}
           error={error}
           classType={''} 
+          onCardLike={onCardLike}
+          onCardDelete={onCardDelete}
         />
       </main>
       <Footer /> 

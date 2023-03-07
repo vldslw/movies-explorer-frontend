@@ -5,9 +5,11 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import More from '../More/More';
 import mainApi from '../../utils/MainApi';
 
-function MoviesCardList({ cardType, buttonClassName, classType, cards, isLoading, notFound, error }) {
+function MoviesCardList({ savedCards, cardType, buttonClassName, classType, cards, isLoading, notFound, error, onCardLike, onCardDelete }) {
 
   const [items, setItems] = useState([]);
+
+  
 
   useEffect (() => {
     setItems(cards.slice(0, 12));
@@ -17,17 +19,6 @@ function MoviesCardList({ cardType, buttonClassName, classType, cards, isLoading
     setItems([...items, ...cards.slice(items.length, items.length + 3)]);
   };
 
-  const onCardLike = async (data) => {
-    try {
-      console.log(data);
-      await mainApi.addMovie(data);
-      const res = await mainApi.getMovies();
-      console.log(res);
-    } catch (e) {
-      console.error(e)
-    }
-  }
-
   return (  
     
     <section className='cards' aria-label="Секция с фильмами">
@@ -35,6 +26,7 @@ function MoviesCardList({ cardType, buttonClassName, classType, cards, isLoading
       <div className={`cards__list ${classType}`}>
       { items.map((card) => 
         <MoviesCard
+         savedCards={savedCards}
          card={card} 
          cardType={cardType}
          key={ (cardType === 'default') ? card.id : card.movieId }
@@ -43,6 +35,7 @@ function MoviesCardList({ cardType, buttonClassName, classType, cards, isLoading
          url={ (cardType === 'default') ? card.image.url : card.image }
          buttonClassName={buttonClassName}
          onCardLike={onCardLike}
+         onCardDelete={onCardDelete}
         />
       )}
       </div>}

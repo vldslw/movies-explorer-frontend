@@ -39,6 +39,17 @@ class MainApi {
     .then(this._checkResStatus);
   }
 
+  deleteMovie(id) {
+    return fetch(`${this._baseUrl}/movies/${id}`, {
+        method: "delete",
+        headers: {
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDAzZjAxNDY2NWNkZjcwODU5NzZlYmYiLCJpYXQiOjE2Nzc5Nzk4NDEsImV4cCI6MTY3ODU4NDY0MX0.uzW4mVoNcnDL7ycmRYcnrd3yp8uDxk7_7yRLIWAB0nE',
+          'Content-Type': 'application/json'
+        }
+    })
+    .then(this._checkResStatus);
+  }
+
   _checkResStatus (res) {
     if (res.ok) {
       return res.json();
