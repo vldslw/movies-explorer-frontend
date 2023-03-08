@@ -1,4 +1,6 @@
 import './Main.css';
+import { useNavigate } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Promo from '../Promo/Promo';
@@ -8,7 +10,18 @@ import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Signing from '../Signing/Signing'
 
-function Main() {
+function Main({auth}) {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      auth(jwt);
+      navigate('/movies');
+    }
+  }, []);
+
   return (
     <>
       <Header 

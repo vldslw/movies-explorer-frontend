@@ -5,10 +5,67 @@ class MainApi {
     this._baseUrl = baseUrl;
   }
 
+  register (name, email, password) {
+    return fetch(`${this._baseUrl}/signup`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name, email, password})
+    })
+    .then(this._checkResStatus);
+  }; 
+
+  authorize(password, email) {
+    return fetch(`${this._baseUrl}/signin`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify({password, email})
+    })
+    .then(this._checkResStatus);
+  }; 
+
+  authUser (token) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(this._checkResStatus);
+  };
+
+  getUser() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(this._checkResStatus);
+  }
+
+  updateUser(name, email) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({name, email})
+    })
+    .then(this._checkResStatus);
+  }
+
   getMovies() {
     return fetch(`${this._baseUrl}/movies`, {
       headers: {
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDAzZjAxNDY2NWNkZjcwODU5NzZlYmYiLCJpYXQiOjE2Nzc5Nzk4NDEsImV4cCI6MTY3ODU4NDY0MX0.uzW4mVoNcnDL7ycmRYcnrd3yp8uDxk7_7yRLIWAB0nE',
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
       }
     })
@@ -19,7 +76,7 @@ class MainApi {
     return fetch(`${this._baseUrl}/movies`, {
         method: "post",
         headers: {
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDAzZjAxNDY2NWNkZjcwODU5NzZlYmYiLCJpYXQiOjE2Nzc5Nzk4NDEsImV4cCI6MTY3ODU4NDY0MX0.uzW4mVoNcnDL7ycmRYcnrd3yp8uDxk7_7yRLIWAB0nE',
+          'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -43,7 +100,7 @@ class MainApi {
     return fetch(`${this._baseUrl}/movies/${id}`, {
         method: "delete",
         headers: {
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDAzZjAxNDY2NWNkZjcwODU5NzZlYmYiLCJpYXQiOjE2Nzc5Nzk4NDEsImV4cCI6MTY3ODU4NDY0MX0.uzW4mVoNcnDL7ycmRYcnrd3yp8uDxk7_7yRLIWAB0nE',
+          'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
           'Content-Type': 'application/json'
         }
     })

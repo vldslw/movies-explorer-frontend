@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './Movies.css';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
@@ -10,49 +11,7 @@ import mainApi from '../../utils/MainApi';
 
 function Movies() {
 
-  // const [cards, setCards] =  useState([]);
-  // const [displayedCards, setDisplayedCards] =  useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [notFound, setNotFound] = useState(() => {
-    let data = null;
-    
-    try {
-      data = localStorage.getItem('notFound');
-    } catch (e) {
-      console.log(e)
-    };
-    return (typeof JSON.parse(data) === 'boolean') ? JSON.parse(data) : false;
-  });
-
-    // useEffect(() => { 
-    //   async function fetchData() {
-    //     try {
-    //       setNotFound(false);
-    //       setError(false);
-    //       setIsLoading(true)
-    //       const localCards = await JSON.parse(localStorage.getItem('cards'));
-    //       if (Array.isArray(localCards)) {
-    //         setCards(localCards);
-    //       } else {
-            
-    //       }
-    //       const res = await mainApi.getMovies();
-    //       if (res.length === 0) {
-    //         setNotFound(true);
-    //       } else {
-    //         setSavedCards(res);
-    //         setDisplayedCards(savedCards);
-    //       }
-    //     } catch (e) {
-    //       console.error(e)
-    //       setError(true);
-    //     } finally {
-    //       setIsLoading(false)
-    //     }
-    //   }
-    //   fetchData();
-    // }, []);
+  const currentUser = React.useContext(CurrentUserContext);
 
   const [cards, setCards] = useState(() => {
     let data = null;
@@ -65,32 +24,21 @@ function Movies() {
     return Array.isArray(data) ? data : [];
   });
 
-  // useEffect(() => { 
-  //   async function fetchData() {
-  //     try {
-  //       console.log('Карты взялись из хранилища');
-  //       const res = await JSON.parse(localStorage.getItem('cards'));
-  //       const query = await localStorage.getItem('query');
-  //       setQuery(query);
-  //       const filteredRes = filter(query, res);
-  //       if (filteredRes.length === 0) {
-  //         setNotFound(true);
-  //       } else {
-  //         setCards(filteredRes);
-  //       }
-  //       if (res.length === 0) {
-  //         setNotFound(true);
-  //       } else {
-  //         setFilteredCards(res);
-  //       }
-  //     } catch (e) {
-  //       console.error(e)
-  //       setError(true);
-  //     }
-  //   }
-  //   fetchData();
-  // }, []);
-  
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [error, setError] = useState(false);
+
+  const [notFound, setNotFound] = useState(() => {
+    let data = null;
+    
+    try {
+      data = localStorage.getItem('notFound');
+    } catch (e) {
+      console.log(e)
+    };
+    return (typeof JSON.parse(data) === 'boolean') ? JSON.parse(data) : false;
+  });
+
   const [query, setQuery] = useState(() => {
     let data = null;
     
@@ -100,7 +48,7 @@ function Movies() {
       console.log(e)
     };
     return (typeof data === 'string') ? data : '';
-    });
+  });
 
   const [checkboxState, setCheckboxState] = useState(() => {
     let data = null;
@@ -111,7 +59,7 @@ function Movies() {
       console.log(e)
     };
     return (typeof JSON.parse(data) === 'boolean') ? JSON.parse(data) : false;
-    });
+  });
 
   const [savedCards, setSavedCards] = useState([]);
 
@@ -119,13 +67,14 @@ function Movies() {
     async function fetchData() {
       try {
         const res = await mainApi.getMovies();
-        setSavedCards(res);
+        const myMovies = res.filter((c) => c.owner._id === currentUser._id);
+        setSavedCards(myMovies);
       } catch (e) {
         console.error(e)
       }
     }
     fetchData();
-  }, [cards]);
+  }, [currentUser]);
 
   useEffect (() => {
     localStorage.setItem('query', query);

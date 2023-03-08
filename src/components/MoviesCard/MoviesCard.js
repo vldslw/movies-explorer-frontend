@@ -17,8 +17,6 @@ function MoviesCard({ card, savedCards, cardType, name, duration, url, onCardLik
     }
   }, [savedCards]);
 
-  console.log(savedCards);
-
   function handleLikeClick() {
     onCardLike(card);
     setIsSaved((current) => !current);

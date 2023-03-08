@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './SavedMovies.css';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
@@ -10,6 +11,8 @@ import moviesApi from '../../utils/MoviesApi';
 
 
 function SavedMovies() {
+
+  const currentUser = React.useContext(CurrentUserContext);
 
   const [savedCards, setSavedCards] =  useState([]);
   const [displayedCards, setDisplayedCards] =  useState([]);
@@ -26,10 +29,11 @@ function SavedMovies() {
         setError(false);
         setIsLoading(true)
         const res = await mainApi.getMovies();
-        if (res.length === 0) {
+        const myMovies = res.filter((c) => c.owner._id === currentUser._id);
+        if (myMovies.length === 0) {
           setNotFound(true);
         } else {
-          setSavedCards(res);
+          setSavedCards(myMovies);
           setDisplayedCards(savedCards);
         }
       } catch (e) {
@@ -40,7 +44,7 @@ function SavedMovies() {
       }
     }
     fetchData();
-  }, []);
+  }, [currentUser]);
 
   const filter = (searchWord, data) => {
     if (checkboxState) {

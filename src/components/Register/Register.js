@@ -1,8 +1,24 @@
 import './Register.css';
+import React, {useState, useEffect} from "react";
 import SignHeader from "../SignHeader/SignHeader";
 import SignBottom from '../SignBottom/SignBottom';
 
-function Register() {
+function Register({ onRegister }) {
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onRegister({ name, email, password})
+  } 
+
+  useEffect(() => {
+    setName('');
+    setEmail('');
+    setPassword('');
+  }, []);
 
   return (
     <>
@@ -12,12 +28,15 @@ function Register() {
       <main className="register">
         <form
           className="register__form"
+          onSubmit={handleSubmit}
         > 
           <span className="register__placeholder">Имя</span>
           <input
             type="text"
             id="name"
             name="name"
+            value={name}
+            onChange={({ target }) => setName(target.value)}
             className="register__input register__input_type_name"
             minLength="2"
             maxLength="40"
@@ -29,6 +48,8 @@ function Register() {
             type="email"
             id="email"
             name="email"
+            value={email}
+            onChange={({ target }) => setEmail(target.value)}
             className="register__input register__input_type_email"
             minLength="2"
             maxLength="40"
@@ -40,6 +61,8 @@ function Register() {
             type="password"
             id="password"
             name="password"
+            value={password}
+            onChange={({ target }) => setPassword(target.value)}
             className="register__input register__input_type_password"
             minLength="2"
             maxLength="40"
