@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import useResize from "use-resize";
 import './MoviesCardList.css';
 import Preloader from '../Preloader/Preloader';
 import MoviesCard from '../MoviesCard/MoviesCard';
@@ -9,14 +10,36 @@ function MoviesCardList({ savedCards, cardType, buttonClassName, classType, card
 
   const [items, setItems] = useState([]);
 
-  
+  const size = useResize();
+
+  console.log(cards);
+
+  const [step, setStep] = useState(3);
+  const [sliceLenght, setSliceLenght] = useState(12);
 
   useEffect (() => {
-    setItems(cards.slice(0, 12));
+    if (size.width > 1024) {
+      setSliceLenght(12);
+      setStep(3);
+    } else if (size.width > 530) {
+      setSliceLenght(8);
+      setStep(2);
+    } else {
+      setSliceLenght(5);
+      setStep(2);
+    }
+  }, [cards, size])
+
+  useEffect (() => {
+    if (cardType === 'default') {
+      setItems(cards.slice(0, sliceLenght));
+    } else {
+      setItems(cards);
+    }    
   }, [cards])
 
   const showMore = () => {
-    setItems([...items, ...cards.slice(items.length, items.length + 3)]);
+    setItems([...items, ...cards.slice(items.length, items.length + step)]);
   };
 
   return (  
