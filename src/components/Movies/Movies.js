@@ -109,9 +109,8 @@ function Movies() {
     setCheckboxState((current) => !current);
   }
 
-  const handleClick = async (event) => {
+  const handleSearch = async () => {
     try {
-      event.preventDefault();
       setNotFound(false);
       setError(false);
       setCards([]);
@@ -170,7 +169,7 @@ function Movies() {
         }
       />
       <main className='content'>
-        <SearchForm query={query} setQuery={setQuery} handleClick={handleClick} handleChange={handleChange} checkboxState={checkboxState}/>
+        <SearchForm query={query} setQuery={setQuery} handleSearch={handleSearch} handleChange={handleChange} checkboxState={checkboxState}/>
         <MoviesCardList
           cards={cards}
           savedCards={savedCards}

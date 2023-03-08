@@ -3,7 +3,7 @@
 }
 
 .search__form {
-  margin: 70px 0 26px;
+  margin: 70px 0 0;
   display: flex;
   border: 1.5px solid rgba(170, 170, 170, .2);
   border-radius: 8px;
@@ -13,7 +13,17 @@
   border: 1.5px solid #3456F3; 
 }
 
-
+.search__error {
+  min-height: 26px;
+  padding: 7px 0; 
+  width: 396px; 
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  color: #EE3465;
+  display: block; 
+  box-sizing: border-box; 
+}
 
 @media screen and (max-width: 1024px) {
   .search {

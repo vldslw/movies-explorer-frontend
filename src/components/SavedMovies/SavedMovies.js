@@ -67,8 +67,7 @@ function SavedMovies() {
     setCheckboxState((current) => !current);
   }
 
-  const handleClick = (event) => {
-    event.preventDefault();
+  const handleSearch = () => {
     setNotFound(false);
     setError(false);
     const filteredRes = filter(query, savedCards);
@@ -105,7 +104,7 @@ function SavedMovies() {
         }
       />
       <main className='content'>
-        <SearchForm query={query} setQuery={setQuery} handleClick={handleClick} handleChange={handleChange} checkboxState={checkboxState} />
+        <SearchForm query={query} setQuery={setQuery} handleSearch={handleSearch} handleChange={handleChange} checkboxState={checkboxState} />
         <MoviesCardList
           savedCards={savedCards}
           cards={displayedCards}
