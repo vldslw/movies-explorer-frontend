@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './MoviesCard.css';
 import mainApi from '../../utils/MainApi';
 
-function MoviesCard({ card, savedCards, cardType, name, duration, url, onCardLike, onCardDelete}) {
+function MoviesCard({ card, savedCards, cardType, name, trailerLink, duration, url, onCardLike, onCardDelete}) {
 
   // let isSaved = (cardType === 'default') ? savedCards.some((c) => c.movieId === card.id) : true;
 
@@ -38,9 +38,11 @@ function MoviesCard({ card, savedCards, cardType, name, duration, url, onCardLik
     <article className="card">
       <div className='card__desc'>
         <h2 className='card__name'>{name}</h2>
-        <p className='card__duration'>{duration}</p>
+        <p className='card__duration'>{duration} минут</p>
       </div>
-      <img className="card__image" src={(cardType === 'default') ? `https://api.nomoreparties.co/${url}`: url} alt={name} />
+      <a href={trailerLink} className="card__link" target="_blank" rel="noreferrer">
+        <img className="card__image" src={(cardType === 'default') ? `https://api.nomoreparties.co/${url}`: url} alt={name} />
+      </a>
       { isSaved  
       ? 
       <button className={`card__button ${(cardType === 'default') ? 'card__button_saved' : 'card__button_delete' }`} onClick={handleDeleteClick}>Сохранить</button> 

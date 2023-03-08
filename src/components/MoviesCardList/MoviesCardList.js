@@ -4,7 +4,6 @@ import './MoviesCardList.css';
 import Preloader from '../Preloader/Preloader';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import More from '../More/More';
-import mainApi from '../../utils/MainApi';
 
 function MoviesCardList({ savedCards, cardType, buttonClassName, classType, cards, isLoading, notFound, error, onCardLike, onCardDelete }) {
 
@@ -54,6 +53,7 @@ function MoviesCardList({ savedCards, cardType, buttonClassName, classType, card
          cardType={cardType}
          key={ (cardType === 'default') ? card.id : card.movieId }
          name={card.nameRU}
+         trailerLink={card.trailerLink}  
          duration={card.duration}
          url={ (cardType === 'default') ? card.image.url : card.image }
          buttonClassName={buttonClassName}
