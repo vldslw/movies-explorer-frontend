@@ -8,7 +8,7 @@ function SearchForm({ query, setQuery, handleClick, handleChange, checkboxState 
 
   return (
     <section className="search" aria-label="Секция с формой поиска">
-      <form className='search__form'>
+      <form className='search__form' >
         <Input query={query} setQuery={setQuery} placeholder='Фильм'/>
         <Button title='Поиск' handleClick={handleClick}/>
       </form>

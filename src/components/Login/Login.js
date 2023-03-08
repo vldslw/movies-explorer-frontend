@@ -1,21 +1,16 @@
 import './Login.css';
-import React, {useState, useEffect} from "react";
 import SignHeader from "../SignHeader/SignHeader";
 import SignBottom from '../SignBottom/SignBottom';
+import useForm from '../../utils/useForm';
 
 function Login({ onLogin }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
+  const validation = useForm();
 
   function handleSubmit(e) {
     e.preventDefault();
-    onLogin({password, email})
+    onLogin(validation.values);
   } 
-
-  useEffect(() => {
-    setEmail('');
-    setPassword('');
-  }, []);
 
   return (
     <>
@@ -32,32 +27,33 @@ function Login({ onLogin }) {
             type="email"
             id="email"
             name="email"
-            value={email}
-            onChange={({ target }) => setEmail(target.value)}
+            value={validation.values.email ?? ''}
+            onChange={(e) => validation.handleChange(e)}
             className="login__input login__input_type_email"
             minLength="2"
             maxLength="40"
             required
           />
-          <span className="login__error"></span>
+          <span className="login__error">{validation.errors.email}</span>
           <span className="login__placeholder">Пароль</span>
           <input
             type="password"
             id="password"
             name="password"
-            value={password}
-            onChange={({ target }) => setPassword(target.value)}
+            value={validation.values.password ?? ''}
+            onChange={(e) => validation.handleChange(e)}
             className="login__input login__input_type_password"
             minLength="2"
             maxLength="40"
             required
           />
-          <span className="login__error"></span>
+          <span className="login__error">{validation.errors.password}</span>
           <SignBottom 
             buttonText={'Войти'}
             linkDesc={'Ещё не зарегистрированы? '}
             link={'/signup'}
             linkText={'Регистрация'}
+            isFormValid={validation.isValid}
           />
         </form>
       </main>

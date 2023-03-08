@@ -19,6 +19,11 @@
   cursor: pointer; 
 } 
 
+.sign-bottom__button_disabled { 
+  color: rgba(160, 160, 160, 1);
+  background: rgba(244, 244, 244, 1);
+} 
+
 .sign-bottom__link-desc {
   margin: 0 auto 0; 
   font-weight: 400;

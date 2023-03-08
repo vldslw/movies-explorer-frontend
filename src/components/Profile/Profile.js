@@ -1,35 +1,10 @@
 import './Profile.css';
-import React, {useState, useEffect, useCallback} from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
-
-function useForm() {
-  const [values, setValues] = useState({});
-  const [errors, setErrors] = useState({});
-  const [isValid, setIsValid] = useState(false);
-
-  const handleChange = (event) => {
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
-    setValues({...values, [name]: value});
-    setErrors({...errors, [name]: target.validationMessage });
-    setIsValid(target.closest("form").checkValidity());
-  };
-
-  const resetForm = useCallback(
-    (newValues = {}, newErrors = {}, newIsValid = false) => {
-      setValues(newValues);
-      setErrors(newErrors);
-      setIsValid(newIsValid);
-    },
-    [setValues, setErrors, setIsValid]
-  );
-
-  return { values, errors, isValid, handleChange, resetForm };
-}
+import useForm from '../../utils/useForm';
 
 function Profile({ onUpdate }) {
 
@@ -37,30 +12,16 @@ function Profile({ onUpdate }) {
   const currentUser = React.useContext(CurrentUserContext);
 
   const validation = useForm();
-  let [name, setName] = useState(''); 
-  let [email, setEmail] = useState(''); 
 
-  let isFormValid = validation.isValid;
+  let isFormValid = validation.isValid && ((validation.values.name !== currentUser.name) || (validation.values.email !== currentUser.email));
 
   useEffect(() => {
-    setName(currentUser.name);
-    setEmail(currentUser.email);
+    validation.setCurrentUserValues(currentUser);
   }, [currentUser]);
-
-  useEffect(() => {
-    setName(validation.values.name);
-  }, [validation.values.name]);
-
-  useEffect(() => {
-    setEmail(validation.values.email);
-  }, [validation.values.email]);
-
-  console.log({name, email});
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log({name, email});
-    onUpdate({name, email})
+    onUpdate(validation.values)
   } 
 
   function signOut(){
