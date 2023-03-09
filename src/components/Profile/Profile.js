@@ -6,7 +6,7 @@ import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import useForm from '../../utils/useForm';
 
-function Profile({ onUpdate, updateMessage }) {
+function Profile({ onUpdate, updateMessage, setLoggedIn }) {
 
   const navigate = useNavigate();
   const currentUser = React.useContext(CurrentUserContext);
@@ -30,6 +30,7 @@ function Profile({ onUpdate, updateMessage }) {
     localStorage.removeItem('notFound');
     localStorage.removeItem('foundCards');
     localStorage.removeItem('checkboxState');
+    setLoggedIn(false);
     navigate("/");
   }
 

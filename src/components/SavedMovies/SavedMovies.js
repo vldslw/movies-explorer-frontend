@@ -4,13 +4,14 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
+import Signing from '../Signing/Signing';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
 
 
-function SavedMovies() {
+function SavedMovies({ loggedIn }) {
 
   const currentUser = React.useContext(CurrentUserContext);
 
@@ -35,6 +36,7 @@ function SavedMovies() {
         } else {
           setSavedCards(myMovies);
           setDisplayedCards(savedCards);
+          setNotFound(false);
         }
       } catch (e) {
         console.error(e)
@@ -65,7 +67,6 @@ function SavedMovies() {
 
   function resetFilteredCards () {
     const filteredRes = filter(query, savedCards);
-    console.log(filteredRes);
     if (filteredRes.length === 0) {
       setDisplayedCards(filteredRes);
       setNotFound(true);
@@ -115,7 +116,7 @@ function SavedMovies() {
       <Header 
         color={"white"}
         children={
-          <Navigation />
+          loggedIn ? <Navigation /> :  <Signing />
         }
       />
       <main className='content'>

@@ -4,12 +4,13 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
+import Signing from '../Signing/Signing';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import moviesApi from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
 
-function Movies() {
+function Movies({ loggedIn }) {
 
   const currentUser = React.useContext(CurrentUserContext);
 
@@ -59,7 +60,6 @@ function Movies() {
     try {
       const movies = await moviesApi.getMovies();
       const filteredRes = filter(query, movies);
-      console.log(filteredRes);
       if (filteredRes.length === 0) {
         setFoundCards(filteredRes);
         setNotFound(true);
@@ -68,9 +68,6 @@ function Movies() {
       }
     } catch (e) {
       console.error(e)
-      setFoundCards([]);
-      setError(true);
-
     }
   }
 
@@ -173,7 +170,7 @@ function Movies() {
       <Header 
         color={"white"}
         children={
-          <Navigation />
+          loggedIn ? <Navigation /> :  <Signing />
         }
       />
       <main className='content'>

@@ -104,12 +104,12 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
        <Routes>
-        <Route path="/" element={<Main auth={auth}/>} />
+        <Route path="/" element={<Main auth={auth} loggedIn={loggedIn}/>} />
         <Route 
           path="/movies" 
           element={
             <ProtectedRoute >
-              <Movies />
+              <Movies loggedIn={loggedIn}/>
             </ProtectedRoute>
           } 
         />
@@ -117,7 +117,7 @@ function App() {
           path="/saved-movies" 
           element={
             <ProtectedRoute >
-              <SavedMovies />
+              <SavedMovies loggedIn={loggedIn}/>
             </ProtectedRoute>
           } 
         />
@@ -125,7 +125,7 @@ function App() {
           path="/profile" 
           element={
             <ProtectedRoute >
-              <Profile onUpdate={onUpdate} updateMessage={updateMessage}/>
+              <Profile onUpdate={onUpdate} updateMessage={updateMessage} setLoggedIn={setLoggedIn}/>
             </ProtectedRoute>
           } 
         />
