@@ -126,7 +126,7 @@
   }
 
   .profile__input-container {
-    width: 260px;
+    min-width: 260px;
   }
 
   .profile__submit-button {
@@ -138,6 +138,10 @@
   }
 
   .profile__error { 
+    min-width: 260px; 
+  }
+
+  .profile__update-status {
     width: 260px; 
   }
 

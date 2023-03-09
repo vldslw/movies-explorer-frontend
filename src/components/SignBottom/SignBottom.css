@@ -58,6 +58,12 @@
     line-height: 15px;
   } 
 
+  .sign-bottom__error {
+    width: 260px; 
+    font-size: 12px;
+    line-height: 15px;
+  }
+
   .sign-bottom__link-desc {
     font-size: 12px;
     line-height: 15px;
