@@ -6,7 +6,7 @@ import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import useForm from '../../utils/useForm';
 
-function Profile({ onUpdate }) {
+function Profile({ onUpdate, updateMessage }) {
 
   const navigate = useNavigate();
   const currentUser = React.useContext(CurrentUserContext);
@@ -77,7 +77,8 @@ function Profile({ onUpdate }) {
             />
           </div>
           <span className="profile__error">{validation.errors.email}</span>
-          
+
+          <p className="profile__update-status">{updateMessage}</p>
           <button type="submit" className={`profile__submit-button ${!isFormValid ? 'profile__submit-button_disabled' : '' }`} disabled={!isFormValid ? true : false}> 
             Редактировать 
           </button> 

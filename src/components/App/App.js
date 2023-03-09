@@ -39,6 +39,8 @@ function App() {
     }
   }, []);
 
+  const [loginError, setLoginError] = useState('');
+
   const onLogin = ({password, email}) => {
     return mainApi.authorize(password, email)
     .then((res) => { 
@@ -51,6 +53,7 @@ function App() {
     })
     .catch((err) => {
       console.log(`Не удалось авторизовать пользователя. ${err}`);
+      setLoginError(`Не удалось авторизоваться. ${err}`);
     });
   }
 
@@ -67,6 +70,8 @@ function App() {
     }
   }, [loggedIn]);
 
+  const [registerError, setRegisterError] = useState('');
+
   const onRegister = ({ name, email, password}) => {
     return mainApi.register(name, email, password)
     .then((res) => {
@@ -74,17 +79,24 @@ function App() {
       return res;
     })
     .catch((err) => {
-      console.log(`Не удалось зарегистрировать пользователя. ${err}`)
+      console.log(`Не удалось зарегистрировать пользователя. ${err}`);
+      setRegisterError(`Не удалось зарегистрироваться. ${err}`);
     });
   }
+
+  const [updateMessage, setUpdateMessage] = useState(''); 
 
   const onUpdate = ({ name, email }) => {
     return mainApi.updateUser(name, email)
     .then((res) => {
       setCurrentUser(res);
+      setUpdateMessage('Данные пользователя обновлены');
+      setTimeout(() => {
+        setUpdateMessage('');
+      }, 1000);
     })
     .catch((err) => {
-      console.log(`Не удалось обновить данные пользователя. ${err}`)
+      console.log(`Не удалось обновить данные пользователя. ${err}`);
     });
   }
   
@@ -113,12 +125,12 @@ function App() {
           path="/profile" 
           element={
             <ProtectedRoute >
-              <Profile onUpdate={onUpdate}/>
+              <Profile onUpdate={onUpdate} updateMessage={updateMessage}/>
             </ProtectedRoute>
           } 
         />
-        <Route path="/signin" element={<Login onLogin={onLogin}/>} />
-        <Route path="/signup" element={<Register onRegister={onRegister}/>} />          
+        <Route path="/signin" element={<Login onLogin={onLogin} signError={loginError}/>} />
+        <Route path="/signup" element={<Register onRegister={onRegister} signError={registerError}/>} />          
         <Route path='*' element={<PageNotFound />} />
       </Routes>
       {/* <Routes>

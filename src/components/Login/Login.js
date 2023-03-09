@@ -3,7 +3,7 @@ import SignHeader from "../SignHeader/SignHeader";
 import SignBottom from '../SignBottom/SignBottom';
 import useForm from '../../utils/useForm';
 
-function Login({ onLogin }) {
+function Login({ onLogin, signError }) {
 
   const validation = useForm();
 
@@ -54,6 +54,7 @@ function Login({ onLogin }) {
             link={'/signup'}
             linkText={'Регистрация'}
             isFormValid={validation.isValid}
+            signError={signError}
           />
         </form>
       </main>

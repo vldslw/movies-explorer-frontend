@@ -3,6 +3,19 @@
   padding-bottom: 80px;
 }
 
+.sign-bottom__error {
+  min-height: 29px;
+  margin: 0 auto 12px; 
+  width: 396px; 
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #EE3465;
+  display: block; 
+  box-sizing: border-box; 
+}
+
 .sign-bottom__button { 
   width: 396px; 
   margin: 0 auto 16px; 

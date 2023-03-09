@@ -93,6 +93,19 @@
   margin-bottom: 196px;
 } 
 
+.profile__update-status {
+  min-height: 29px;
+  margin: 0 auto 12px; 
+  width: 396px; 
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: rgba(52, 86, 243, 1);
+  display: block; 
+  box-sizing: border-box; 
+}
+
 @media screen and (max-width: 1024px) {
 
   .profile {
