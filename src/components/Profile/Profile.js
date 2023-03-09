@@ -28,7 +28,7 @@ function Profile({ onUpdate }) {
     localStorage.removeItem('jwt');
     localStorage.removeItem('query');
     localStorage.removeItem('notFound');
-    localStorage.removeItem('cards');
+    localStorage.removeItem('foundCards');
     localStorage.removeItem('checkboxState');
     navigate("/");
   }

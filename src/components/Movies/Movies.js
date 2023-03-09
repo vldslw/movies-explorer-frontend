@@ -13,35 +13,18 @@ function Movies() {
 
   const currentUser = React.useContext(CurrentUserContext);
 
-  const [cards, setCards] = useState(() => {
+  const [foundCards, setFoundCards] = useState(() => {
     let data = null;
-    
     try {
-      data = JSON.parse(localStorage.getItem('cards'));
+      data = JSON.parse(localStorage.getItem('foundCards'));
     } catch (e) {
       console.log(e)
     };
     return Array.isArray(data) ? data : [];
   });
 
-  const [isLoading, setIsLoading] = useState(false);
-
-  const [error, setError] = useState(false);
-
-  const [notFound, setNotFound] = useState(() => {
-    let data = null;
-    
-    try {
-      data = localStorage.getItem('notFound');
-    } catch (e) {
-      console.log(e)
-    };
-    return (typeof JSON.parse(data) === 'boolean') ? JSON.parse(data) : false;
-  });
-
   const [query, setQuery] = useState(() => {
     let data = null;
-    
     try {
       data = localStorage.getItem('query');
     } catch (e) {
@@ -52,7 +35,6 @@ function Movies() {
 
   const [checkboxState, setCheckboxState] = useState(() => {
     let data = null;
-    
     try {
       data = localStorage.getItem('checkboxState');
     } catch (e) {
@@ -61,36 +43,30 @@ function Movies() {
     return (typeof JSON.parse(data) === 'boolean') ? JSON.parse(data) : false;
   });
 
-  const [savedCards, setSavedCards] = useState([]);
-
-  useEffect(() => { 
-    async function fetchData() {
-      try {
-        const res = await mainApi.getMovies();
-        const myMovies = res.filter((c) => c.owner._id === currentUser._id);
-        setSavedCards(myMovies);
-      } catch (e) {
-        console.error(e)
-      }
-    }
-    fetchData();
-  }, [currentUser]);
+  const handleChange = () => {
+    setCheckboxState((current) => !current);
+  }
 
   useEffect (() => {
-    localStorage.setItem('query', query);
-  }, [query])
+    localStorage.setItem('checkboxState', checkboxState);
+  }, [checkboxState])
+
+  const [notFound, setNotFound] = useState(() => {
+    let data = null;
+    try {
+      data = localStorage.getItem('notFound');
+    } catch (e) {
+      console.log(e)
+    };
+    return (typeof JSON.parse(data) === 'boolean') ? JSON.parse(data) : false;
+  });
 
   useEffect (() => {
     localStorage.setItem('notFound', notFound);
   }, [notFound])
 
-  useEffect (() => {
-    localStorage.setItem('cards', JSON.stringify(cards));
-  }, [cards])
-
-  useEffect (() => {
-    localStorage.setItem('checkboxState', checkboxState);
-  }, [checkboxState])
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const filter = (searchWord, data) => {
     if (checkboxState) {
@@ -102,25 +78,27 @@ function Movies() {
         nameRU.toLowerCase().includes(searchWord.toLowerCase())
       );
     }
-    
-  }
-  
-  const handleChange = () => {
-    setCheckboxState((current) => !current);
   }
 
   const handleSearch = async () => {
     try {
+      setFoundCards([]);
       setNotFound(false);
       setError(false);
-      setCards([]);
       setIsLoading(true)
-      const res = await moviesApi.getMovies();
-      const filteredRes = filter(query, res);
-      if (filteredRes.length === 0) {
+      const movies = await moviesApi.getMovies();
+      const filteredMovies = filter(query, movies);
+      if (filteredMovies.length === 0) {
+        localStorage.setItem('foundCards', JSON.stringify(filteredMovies));
+        localStorage.setItem('query', query);
+        localStorage.setItem('checkboxState', checkboxState);
+        setFoundCards(filteredMovies);
         setNotFound(true);
       } else {
-        setCards(filteredRes);
+        localStorage.setItem('foundCards', JSON.stringify(filteredMovies));
+        localStorage.setItem('query', query);
+        localStorage.setItem('checkboxState', checkboxState);
+        setFoundCards(filteredMovies);
       }
     } catch (e) {
       console.error(e)
@@ -130,33 +108,43 @@ function Movies() {
     }
   }
 
+  const [savedCards, setSavedCards] = useState([]);
+
+  async function resetSavedCards() {
+    try {
+      const res = await mainApi.getMovies();
+      const myMovies = res.filter((c) => c.owner._id === currentUser._id);
+      setSavedCards(myMovies);
+    } catch (e) {
+      console.error(e)
+      setFoundCards([]);
+      setError(true);
+    }
+  }
+
+  useEffect(() => {
+    resetSavedCards();
+  }, [currentUser]);
+
   const onCardLike = async (data) => {
     try {
       await mainApi.addMovie(data);
-      const res = await moviesApi.getMovies();
-      const filteredRes = filter(query, res)
-      if (filteredRes.length === 0) {
-        setNotFound(true);
-      } else {
-        setCards(filteredRes);
-      }
+      resetSavedCards();
     } catch (e) {
       console.error(e)
+      setFoundCards([]);
+      setError(true);
     }
   }
 
   const onCardDelete = async (id) => {
     try {
       await mainApi.deleteMovie(id);
-      const res = await moviesApi.getMovies();
-      const filteredRes = filter(query, res)
-      if (filteredRes.length === 0) {
-        setNotFound(true);
-      } else {
-        setCards(filteredRes);
-      }
+      resetSavedCards();
     } catch (e) {
       console.error(e)
+      setFoundCards([]);
+      setError(true);
     }
   }
  
@@ -171,7 +159,7 @@ function Movies() {
       <main className='content'>
         <SearchForm query={query} setQuery={setQuery} handleSearch={handleSearch} handleChange={handleChange} checkboxState={checkboxState}/>
         <MoviesCardList
-          cards={cards}
+          cards={foundCards}
           savedCards={savedCards}
           cardType={'default'}
           isLoading={isLoading}

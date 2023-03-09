@@ -11,10 +11,18 @@ function MoviesCardList({ savedCards, cardType, buttonClassName, classType, card
 
   const size = useResize();
 
-  console.log(cards);
-
   const [step, setStep] = useState(3);
   const [sliceLenght, setSliceLenght] = useState(12);
+
+
+
+  function resetCards() {
+    if (cardType === 'default') {
+      setItems(cards.slice(0, sliceLenght));
+    } else {
+      setItems(cards);
+    }
+  } 
 
   useEffect (() => {
     if (size.width > 1024) {
@@ -27,15 +35,11 @@ function MoviesCardList({ savedCards, cardType, buttonClassName, classType, card
       setSliceLenght(5);
       setStep(2);
     }
-  }, [cards, size])
+  }, [size])
 
   useEffect (() => {
-    if (cardType === 'default') {
-      setItems(cards.slice(0, sliceLenght));
-    } else {
-      setItems(cards);
-    }    
-  }, [cards])
+    resetCards();
+  }, [cards, size])
 
   const showMore = () => {
     setItems([...items, ...cards.slice(items.length, items.length + step)]);

@@ -10,7 +10,7 @@ function SearchForm({ query, setQuery, handleSearch, handleChange, checkboxState
 
   function handleClick(e) {
     e.preventDefault();
-    if (query === '') {
+    if (!query || query.length === 0) {
       setError('Нужно ввести ключевое слово')
     } else {
       handleSearch();
