@@ -63,6 +63,21 @@ function SavedMovies() {
     setDisplayedCards(savedCards);
   }, [savedCards]);
 
+  function resetFilteredCards () {
+    const filteredRes = filter(query, savedCards);
+    console.log(filteredRes);
+    if (filteredRes.length === 0) {
+      setDisplayedCards(filteredRes);
+      setNotFound(true);
+    } else {
+      setDisplayedCards(filteredRes);
+    }
+  }
+
+  useEffect(() => { 
+    resetFilteredCards();
+  }, [checkboxState]);
+
   const handleChange = () => {
     setCheckboxState((current) => !current);
   }

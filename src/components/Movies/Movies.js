@@ -43,12 +43,44 @@ function Movies() {
     return (typeof JSON.parse(data) === 'boolean') ? JSON.parse(data) : false;
   });
 
+  const filter = (searchWord, data) => {
+    if (checkboxState) {
+      return data.filter(({ nameRU, duration }) =>
+        nameRU.toLowerCase().includes(searchWord.toLowerCase()) && duration < 40
+      );
+    } else {
+      return data.filter(({ nameRU }) =>
+        nameRU.toLowerCase().includes(searchWord.toLowerCase())
+      );
+    }
+  }
+
+  async function resetFilteredCards () {
+    try {
+      const movies = await moviesApi.getMovies();
+      const filteredRes = filter(query, movies);
+      console.log(filteredRes);
+      if (filteredRes.length === 0) {
+        setFoundCards(filteredRes);
+        setNotFound(true);
+      } else {
+        setFoundCards(filteredRes);
+      }
+    } catch (e) {
+      console.error(e)
+      setFoundCards([]);
+      setError(true);
+
+    }
+  }
+
   const handleChange = () => {
     setCheckboxState((current) => !current);
   }
 
   useEffect (() => {
     localStorage.setItem('checkboxState', checkboxState);
+    resetFilteredCards();
   }, [checkboxState])
 
   const [notFound, setNotFound] = useState(() => {
@@ -67,18 +99,6 @@ function Movies() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
-
-  const filter = (searchWord, data) => {
-    if (checkboxState) {
-      return data.filter(({ nameRU, duration }) =>
-        nameRU.toLowerCase().includes(searchWord.toLowerCase()) && duration < 40
-      );
-    } else {
-      return data.filter(({ nameRU }) =>
-        nameRU.toLowerCase().includes(searchWord.toLowerCase())
-      );
-    }
-  }
 
   const handleSearch = async () => {
     try {
