@@ -1,0 +1,29 @@
+.search__button {
+  width: 100px;
+  height: 52px;
+  margin: 10px 10px 10px auto;
+  border: none;
+  padding: 17px 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  background: #3456F3;
+  border-radius: 5px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.search__button:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+@media screen and (max-width: 425px) {
+  
+  .search__button {
+    margin: 6px 6px 6px auto;
+    width: 80px;
+    height: 44px;
+    padding: 13px 10px;
+  }
+}

@@ -50,9 +50,6 @@
 
 input:checked + .filter__slider:before {
   background-color: #2BE080;
-}
-
-input:checked + .filter__slider:before {
   -webkit-transform: translateX(16px);
   -ms-transform: translateX(16px);
   transform: translateX(16px);
