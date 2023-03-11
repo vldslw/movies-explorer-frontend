@@ -57,17 +57,28 @@ function Movies({ loggedIn }) {
   }
 
   async function resetFilteredCards () {
-    try {
-      const movies = await moviesApi.getMovies();
+    let movies = JSON.parse(localStorage.getItem('movies'));
+    if (Array.isArray(movies)) {
       const filteredRes = filter(query, movies);
-      if (filteredRes.length === 0) {
-        setFoundCards(filteredRes);
-        setNotFound(true);
-      } else {
-        setFoundCards(filteredRes);
+        if (filteredRes.length === 0) {
+          setFoundCards(filteredRes);
+          setNotFound(true);
+        } else {
+          setFoundCards(filteredRes);
+        }
+    } else {
+      try {
+        movies = await moviesApi.getMovies();
+        const filteredRes = filter(query, movies);
+        if (filteredRes.length === 0) {
+          setFoundCards(filteredRes);
+          setNotFound(true);
+        } else {
+          setFoundCards(filteredRes);
+        }
+      } catch (e) {
+        console.error(e)
       }
-    } catch (e) {
-      console.error(e)
     }
   }
 
@@ -97,25 +108,45 @@ function Movies({ loggedIn }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
+  function checkMovies () {
+    let movies = null;
+    try {
+      movies = JSON.parse(localStorage.getItem('movies'));
+    } catch (e) {
+      console.log(e)
+    };
+    return Array.isArray(movies) ? true : false;
+  }
+
+  function setFilteredMovies (movies) {
+    const filteredMovies = filter(query, movies);
+        if (filteredMovies.length === 0) {
+          localStorage.setItem('foundCards', JSON.stringify(filteredMovies));
+          localStorage.setItem('query', query);
+          localStorage.setItem('checkboxState', checkboxState);
+          setFoundCards(filteredMovies);
+          setNotFound(true);
+        } else {
+          localStorage.setItem('foundCards', JSON.stringify(filteredMovies));
+          localStorage.setItem('query', query);
+          localStorage.setItem('checkboxState', checkboxState);
+          setFoundCards(filteredMovies);
+        }
+  }
+
   const handleSearch = async () => {
     try {
       setFoundCards([]);
       setNotFound(false);
       setError(false);
-      setIsLoading(true)
-      const movies = await moviesApi.getMovies();
-      const filteredMovies = filter(query, movies);
-      if (filteredMovies.length === 0) {
-        localStorage.setItem('foundCards', JSON.stringify(filteredMovies));
-        localStorage.setItem('query', query);
-        localStorage.setItem('checkboxState', checkboxState);
-        setFoundCards(filteredMovies);
-        setNotFound(true);
+      setIsLoading(true);
+      if (checkMovies()) {
+        const movies = JSON.parse(localStorage.getItem('movies'));
+        setFilteredMovies(movies);
       } else {
-        localStorage.setItem('foundCards', JSON.stringify(filteredMovies));
-        localStorage.setItem('query', query);
-        localStorage.setItem('checkboxState', checkboxState);
-        setFoundCards(filteredMovies);
+        const movies = await moviesApi.getMovies();
+        localStorage.setItem('movies', JSON.stringify(movies));
+        setFilteredMovies(movies);
       }
     } catch (e) {
       console.error(e)
