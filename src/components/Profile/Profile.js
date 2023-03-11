@@ -5,7 +5,7 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import useForm from '../../utils/useForm';
-const { emailPattern, namePattern } = require('../../constants/constants');
+import { EMAIL_PATTERN, NAME_PATTERN } from '../../constants/constants';
 
 function Profile({ onUpdate, updateMessage, setLoggedIn, updateError }) {
 
@@ -31,6 +31,7 @@ function Profile({ onUpdate, updateMessage, setLoggedIn, updateError }) {
     localStorage.removeItem('notFound');
     localStorage.removeItem('foundCards');
     localStorage.removeItem('checkboxState');
+    localStorage.removeItem('movies');
     setLoggedIn(false);
     navigate("/");
   }
@@ -60,7 +61,7 @@ function Profile({ onUpdate, updateMessage, setLoggedIn, updateError }) {
               className="profile__input profile__input_type_name"
               minLength="2"
               maxLength="40"
-              pattern={namePattern}
+              pattern={NAME_PATTERN}
               required
             />
           </div>
@@ -76,7 +77,7 @@ function Profile({ onUpdate, updateMessage, setLoggedIn, updateError }) {
             className="profile__input profile__input_type_email"
             minLength="2"
             maxLength="40"
-            pattern={emailPattern}
+            pattern={EMAIL_PATTERN}
             required
             />
           </div>

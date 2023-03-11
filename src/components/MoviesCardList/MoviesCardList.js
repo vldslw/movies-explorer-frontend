@@ -4,6 +4,16 @@ import './MoviesCardList.css';
 import Preloader from '../Preloader/Preloader';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import More from '../More/More';
+import { 
+  SCREEN_WIDTH_L,
+  SCREEN_WIDTH_M,
+  SLICE_LENGTH_L,
+  SLICE_LENGTH_M,
+  SLICE_LENGTH_S,
+  STEP_L,
+  STEP_M,
+  STEP_S,
+ } from '../../constants/constants';
 
 function MoviesCardList({ savedCards, cardType, buttonClassName, classType, cards, isLoading, notFound, error, onCardLike, onCardDelete }) {
 
@@ -25,17 +35,17 @@ function MoviesCardList({ savedCards, cardType, buttonClassName, classType, card
   } 
 
   useEffect (() => {
-    if (size.width > 1024) {
-      setSliceLenght(12);
-      setStep(3);
-    } else if (size.width > 530) {
-      setSliceLenght(8);
-      setStep(2);
+    if (size.width > SCREEN_WIDTH_L) {
+      setSliceLenght(SLICE_LENGTH_L);
+      setStep(STEP_L);
+    } else if (size.width > SCREEN_WIDTH_M) {
+      setSliceLenght(SLICE_LENGTH_M);
+      setStep(STEP_M);
     } else {
-      setSliceLenght(5);
-      setStep(2);
+      setSliceLenght(SLICE_LENGTH_S);
+      setStep(STEP_S);
     }
-  }, [size])
+  }, [size]) 
 
   useEffect (() => {
     resetCards();

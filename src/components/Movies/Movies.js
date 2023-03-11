@@ -9,6 +9,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import moviesApi from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
+import { SHORTS_DURATION } from '../../constants/constants';
 
 function Movies({ loggedIn }) {
 
@@ -47,7 +48,7 @@ function Movies({ loggedIn }) {
   const filter = (searchWord, data) => {
     if (checkboxState) {
       return data.filter(({ nameRU, duration }) =>
-        nameRU.toLowerCase().includes(searchWord.toLowerCase()) && duration < 40
+        nameRU.toLowerCase().includes(searchWord.toLowerCase()) && duration < SHORTS_DURATION
       );
     } else {
       return data.filter(({ nameRU }) =>

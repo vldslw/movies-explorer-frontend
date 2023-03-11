@@ -4,7 +4,7 @@ import React, {useEffect} from 'react';
 import SignHeader from "../SignHeader/SignHeader";
 import SignBottom from '../SignBottom/SignBottom';
 import useForm from '../../utils/useForm';
-const { emailPattern, namePattern } = require('../../constants/constants');
+import { EMAIL_PATTERN, NAME_PATTERN } from '../../constants/constants';
 
 function Register({ onRegister, signError }) {
 
@@ -44,7 +44,7 @@ function Register({ onRegister, signError }) {
             className="register__input register__input_type_name"
             minLength="2"
             maxLength="40"
-            pattern={namePattern}
+            pattern={NAME_PATTERN}
             required
           />
           <span className="register__error">{validation.errors.name}</span>
@@ -58,7 +58,7 @@ function Register({ onRegister, signError }) {
             className="register__input register__input_type_email"
             minLength="2"
             maxLength="40"
-            pattern={emailPattern}
+            pattern={EMAIL_PATTERN}
             required
           />
           <span className="register__error">{validation.errors.email}</span>

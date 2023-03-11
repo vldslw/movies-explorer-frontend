@@ -8,7 +8,7 @@ import Signing from '../Signing/Signing';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import mainApi from '../../utils/MainApi';
-import moviesApi from '../../utils/MoviesApi';
+import { SHORTS_DURATION } from '../../constants/constants';
 
 
 function SavedMovies({ loggedIn }) {
@@ -51,7 +51,7 @@ function SavedMovies({ loggedIn }) {
   const filter = (searchWord, data) => {
     if (checkboxState) {
       return data.filter(({ nameRU, duration }) =>
-        nameRU.toLowerCase().includes(searchWord.toLowerCase()) && duration < 40
+        nameRU.toLowerCase().includes(searchWord.toLowerCase()) && duration < SHORTS_DURATION
       );
     } else {
       return data.filter(({ nameRU }) =>

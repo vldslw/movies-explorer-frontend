@@ -4,7 +4,7 @@ import React, {useEffect} from 'react';
 import SignHeader from "../SignHeader/SignHeader";
 import SignBottom from '../SignBottom/SignBottom';
 import useForm from '../../utils/useForm';
-const { emailPattern } = require('../../constants/constants');
+import { EMAIL_PATTERN } from '../../constants/constants';
 
 function Login({ onLogin, signError }) {
 
@@ -44,7 +44,7 @@ function Login({ onLogin, signError }) {
             className="login__input login__input_type_email"
             minLength="2"
             maxLength="40"
-            pattern={emailPattern}
+            pattern={EMAIL_PATTERN}
             required
           />
           <span className="login__error">{validation.errors.email}</span>
