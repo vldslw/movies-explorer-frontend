@@ -85,6 +85,7 @@ function App() {
   }
 
   const [updateMessage, setUpdateMessage] = useState(''); 
+  const [updateError, setUpdateError] = useState(''); 
 
   const onUpdate = ({ name, email }) => {
     return mainApi.updateUser(name, email)
@@ -97,6 +98,10 @@ function App() {
     })
     .catch((err) => {
       console.log(`Не удалось обновить данные пользователя. ${err}`);
+      setUpdateError(`Не удалось обновить данные. ${err}`);
+      setTimeout(() => {
+        setUpdateError('');
+      }, 3000);
     });
   }
   
@@ -125,7 +130,7 @@ function App() {
           path="/profile" 
           element={
             <ProtectedRoute >
-              <Profile onUpdate={onUpdate} updateMessage={updateMessage} setLoggedIn={setLoggedIn}/>
+              <Profile onUpdate={onUpdate} updateMessage={updateMessage} setLoggedIn={setLoggedIn} updateError={updateError}/>
             </ProtectedRoute>
           } 
         />

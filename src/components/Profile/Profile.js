@@ -7,7 +7,7 @@ import Navigation from '../Navigation/Navigation';
 import useForm from '../../utils/useForm';
 const { emailPattern, namePattern } = require('../../constants/constants');
 
-function Profile({ onUpdate, updateMessage, setLoggedIn }) {
+function Profile({ onUpdate, updateMessage, setLoggedIn, updateError }) {
 
   const navigate = useNavigate();
   const currentUser = React.useContext(CurrentUserContext);
@@ -82,7 +82,10 @@ function Profile({ onUpdate, updateMessage, setLoggedIn }) {
           </div>
           <span className="profile__error">{validation.errors.email}</span>
 
-          <p className="profile__update-status">{updateMessage}</p>
+          <div className="profile__update">
+            <span className="profile__update-status">{updateMessage}</span>
+            <span className="profile__update-error">{updateError}</span>
+          </div>
           <button type="submit" className={`profile__submit-button ${!isFormValid ? 'profile__submit-button_disabled' : '' }`} disabled={!isFormValid ? true : false}> 
             Редактировать 
           </button> 

@@ -93,15 +93,34 @@
   margin-bottom: 196px;
 } 
 
-.profile__update-status {
+.profile__update {
   min-height: 29px;
   margin: 0 auto 12px; 
+  width: 396px; 
+  display: block; 
+  box-sizing: border-box; 
+}
+
+.profile__update-status {
+  margin: 0 auto; 
   width: 396px; 
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   text-align: center;
   color: rgba(52, 86, 243, 1);
+  display: block; 
+  box-sizing: border-box; 
+}
+
+.profile__update-error {
+  margin: 0 auto; 
+  width: 396px; 
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: rgba(238, 52, 101, 1);
   display: block; 
   box-sizing: border-box; 
 }
@@ -142,6 +161,10 @@
   }
 
   .profile__update-status {
+    width: 260px; 
+  }
+
+  .profile__update-error {
     width: 260px; 
   }
 
