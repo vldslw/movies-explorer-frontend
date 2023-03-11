@@ -104,7 +104,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
        <Routes>
-        <Route path="/" element={<Main auth={auth} loggedIn={loggedIn}/>} />
+        <Route path="/" element={<Main loggedIn={loggedIn}/>} />
         <Route 
           path="/movies" 
           element={

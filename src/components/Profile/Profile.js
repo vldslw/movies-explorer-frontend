@@ -5,6 +5,7 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import useForm from '../../utils/useForm';
+const { emailPattern, namePattern } = require('../../constants/constants');
 
 function Profile({ onUpdate, updateMessage, setLoggedIn }) {
 
@@ -59,6 +60,7 @@ function Profile({ onUpdate, updateMessage, setLoggedIn }) {
               className="profile__input profile__input_type_name"
               minLength="2"
               maxLength="40"
+              pattern={namePattern}
               required
             />
           </div>
@@ -74,6 +76,7 @@ function Profile({ onUpdate, updateMessage, setLoggedIn }) {
             className="profile__input profile__input_type_email"
             minLength="2"
             maxLength="40"
+            pattern={emailPattern}
             required
             />
           </div>

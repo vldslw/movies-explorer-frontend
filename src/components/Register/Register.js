@@ -2,6 +2,7 @@ import './Register.css';
 import SignHeader from "../SignHeader/SignHeader";
 import SignBottom from '../SignBottom/SignBottom';
 import useForm from '../../utils/useForm';
+const { emailPattern, namePattern } = require('../../constants/constants');
 
 function Register({ onRegister, signError }) {
 
@@ -32,6 +33,7 @@ function Register({ onRegister, signError }) {
             className="register__input register__input_type_name"
             minLength="2"
             maxLength="40"
+            pattern={namePattern}
             required
           />
           <span className="register__error">{validation.errors.name}</span>
@@ -45,6 +47,7 @@ function Register({ onRegister, signError }) {
             className="register__input register__input_type_email"
             minLength="2"
             maxLength="40"
+            pattern={emailPattern}
             required
           />
           <span className="register__error">{validation.errors.email}</span>
