@@ -1,4 +1,6 @@
 import './Register.css';
+import { useNavigate } from 'react-router-dom';
+import React, {useEffect} from 'react';
 import SignHeader from "../SignHeader/SignHeader";
 import SignBottom from '../SignBottom/SignBottom';
 import useForm from '../../utils/useForm';
@@ -7,6 +9,15 @@ const { emailPattern, namePattern } = require('../../constants/constants');
 function Register({ onRegister, signError }) {
 
   const validation = useForm();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      navigate('/movies');
+    }
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
