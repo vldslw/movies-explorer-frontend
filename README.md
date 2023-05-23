@@ -12,7 +12,7 @@
 
 [![My Skills](https://skillicons.dev/icons?i=html,css,js,react,nginx,nodejs,express)](https://skillicons.dev)
 
-В дипломном проекты применены все основные технологии, которые были освоены на курсе веб-разработки: HTML, CSS, JS, React, Nginx, Nodejs, Git, Express.js, mongoDB.
+В дипломном проекте применены все основные технологии, которые были освоены на курсе веб-разработки: HTML, CSS, JS, React, Nginx, Nodejs, Git, Express.js, mongoDB.
 
 ## Скрипты
 
