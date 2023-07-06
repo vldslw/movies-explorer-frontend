@@ -3,6 +3,19 @@
   padding-bottom: 80px;
 }
 
+.sign-bottom__error {
+  min-height: 29px;
+  margin: 0 auto 12px; 
+  width: 396px; 
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #EE3465;
+  display: block; 
+  box-sizing: border-box; 
+}
+
 .sign-bottom__button { 
   width: 396px; 
   margin: 0 auto 16px; 
@@ -17,6 +30,11 @@
   border: none; 
   border-radius: 2px; 
   cursor: pointer; 
+} 
+
+.sign-bottom__button_disabled { 
+  color: rgba(160, 160, 160, 1);
+  background: rgba(244, 244, 244, 1);
 } 
 
 .sign-bottom__link-desc {
@@ -39,6 +57,12 @@
     font-size: 12px;
     line-height: 15px;
   } 
+
+  .sign-bottom__error {
+    width: 260px; 
+    font-size: 12px;
+    line-height: 15px;
+  }
 
   .sign-bottom__link-desc {
     font-size: 12px;
