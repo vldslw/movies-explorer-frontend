@@ -118,7 +118,7 @@ class MainApi {
 
 const mainApi = new MainApi({
   // baseUrl: 'https://api.beatfilm-vldslw.nomoredomains.club',
-  baseUrl: 'https://movies-explorer-api-u78y.onrender.com',
+  baseUrl: 'https://movies-explorer-api-ni81.onrender.com',
 });
 
 export default mainApi;
